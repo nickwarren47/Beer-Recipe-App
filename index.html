@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>beer Tale</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="beer-header">
+      <div>
+      <img
+        src="https://static.wixstatic.com/media/2cd43b_fd0aba46da664bba9992400e48d51338~mv2_d_3543_4502_s_4_2.png/v1/fill/w_636,h_808,q_90/2cd43b_fd0aba46da664bba9992400e48d51338~mv2_d_3543_4502_s_4_2.png"
+        alt="beer-header"
+      /> 
+      </div>
+      <div id="beer-story">
+      <p style="text-align:center">
+        Welcome to our group's beer recipe app. The purpose of this web app is to easily find high quality beer recipes without any filler.
+      </p>
+      </div>
+    </div>
+
+    <div class="container">
+      <form class="add-beer-form">
+        <h3>Create a beer!</h3>
+
+        <input
+          id="1"
+          type="text"
+          name="name"
+          value=""
+          placeholder="Enter a beer name..."
+          class="input-text"
+        />
+        <br />
+        <input
+          id="2"
+          type="text"
+          name="image"
+          value=""
+          placeholder="Enter a beer image URL..."
+          class="input-text"
+        />
+        <br />
+        <input
+          id="3"
+          type="submit"
+          name="submit"
+          value="Create Beer"
+          class="submit"
+        />
+      </form>
+    </div>
+    <p style="text-align:center">
+      <button id="new-beer-btn">Add a new beer!</button>
+    </p>
+
+    <div id="beer-collection"></div>
+    <script type="text/javascript" src="src/index.js"></script>
+  </body>
+</html>
