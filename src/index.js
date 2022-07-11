@@ -3,8 +3,6 @@ let isForm = false;
 const addBeerButton = document.getElementById('new-beer-btn');
 const formContainer = document.querySelector('.container');
 
-let beerArr = [];
-
 const fetchBeers = (callback) =>
 {
     fetch(`https://api.punkapi.com/v2/beers`)
@@ -61,33 +59,61 @@ const renderCards = (beers) =>
     mainDiv.append(div);
     })
 }
-const populateArray = (data) =>
+
+const createObjectOfBeerAttributeValues = (data) =>
 {
-    data.forEach(beer =>{
-        beerArr.push(beer);
+    let beerAttributes = {abv: [], ibu: [], name: [], hop: [], ph: [], yeast: []};
+    data.forEach((beer) => {beerAttributes.abv.push(beer.abv)
+    beerAttributes.ibu.push(beer.ibu)
+    beerAttributes.name.push(beer.name)
+    beerAttributes.hop.push(beer.hop)
+    beerAttributes.ph.push(beer.ph)
+    beerAttributes.yeast.push(beer.ingredients.yeast)
+    });
+    beerAttributes.abv.sort();
+    beerAttributes.ibu.sort();
+    beerAttributes.name.sort();
+    beerAttributes.hop.sort();
+    beerAttributes.ph.sort();
+    beerAttributes.yeast.sort();
+    populateDropdown(beerAttributes);
+}
+const populateDropdown = (obj) =>
+{
+    obj.abv.forEach(value => {
+        let option = document.createElement('option');
+        option.innerHTML = value;
+        document.getElementById('abv').append(option);
     })
-    console.log(beerArr)
-}
-let beerAttributes = {abv: [], ibu: [], name: [],}
-const createObjectOfBeerAttributeValues = (array,callback) =>
-{
-    for(let index in array)
-    {
-    let beerObj = array[index]
-    for(let key in beerObj) {
-        if(key !== 'id' && key !== 'image_url'&& key !== 'description'&& key !== 'tagline')
-        {
-            let objAtkey = beerObj[key];
-            callback(objAtKey);
-        }
-        }
-    }
-}
-const attributeDropDown = () =>
-{
+    obj.ibu.forEach(value => {
+        let option = document.createElement('option');
+        option.innerHTML = value;
+        document.getElementById('ibu').append(option);
+    })
+    obj.name.forEach(value => {
+        let option = document.createElement('option');
+        option.innerHTML = value;
+        document.getElementById('name').append(option);
+    })
+    obj.hop.forEach(value => {
+        let option = document.createElement('option');
+        option.innerHTML = value;
+        document.getElementById('hop').append(option);
+    })
+
     
+    obj.ph.forEach(value => {
+        let option = document.createElement('option');
+        option.innerHTML = value;
+        document.getElementById('ph').append(option);
+    })
+    obj.yeast.forEach(value => {
+        let option = document.createElement('option');
+        option.innerHTML = value;
+        document.getElementById('yeast').append(option);
+    })
 }
-fetchBeers(populateArray);
-createObjectOfBeerAttributeValues(beerArr)
+
 fetchBeers(renderCards);
+fetchBeers(createObjectOfBeerAttributeValues);
 
