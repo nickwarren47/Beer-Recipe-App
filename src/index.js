@@ -35,6 +35,11 @@ const mainDiv = document.getElementById('beer-collection');
 
 const renderCards = (beers) =>
 {
+    const closePopUpBox = () => 
+    {
+      popUpBox.style.display = "none";
+      document.getElementById('infobox').remove();
+    };
     //im sorry
     beers.forEach(beer => {
     const div = document.createElement('div');
@@ -86,7 +91,10 @@ const renderCards = (beers) =>
       data.style["text-decoration"] = "underline";
       popupCloseButton.className = 'popupCloseButton'
 
-      keyData.append( data, beerName, abv, ibu, description );
+      newdiv = document.createElement('div');
+      newdiv.id = 'infobox'
+      newdiv.append( data, beerName, abv, ibu, description);
+      keyData.append(newdiv);
 
     }
     
@@ -94,15 +102,11 @@ const renderCards = (beers) =>
 
     //closes the popup box when its clicked
 
-    const closePopUpBox = () => {
-      popUpBox.style.display = "none";
-      keyData.replaceChildren()
-    };
     popupCloseButton.addEventListener("click", closePopUpBox);
-
     div.append(h4,img,p,btn);
     mainDiv.append(div);
     })
+
 }
 
 const createObjectOfBeerAttributeValues = (data) =>
