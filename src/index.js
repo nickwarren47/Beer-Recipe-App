@@ -100,8 +100,6 @@ const populateDropdown = (obj) =>
         option.innerHTML = value;
         document.getElementById('hop').append(option);
     })
-
-    
     obj.ph.forEach(value => {
         let option = document.createElement('option');
         option.innerHTML = value;
@@ -112,6 +110,7 @@ const populateDropdown = (obj) =>
         option.innerHTML = value;
         document.getElementById('yeast').append(option);
     })
+    console.log(obj)
 }
 
 fetchBeers(renderCards);
