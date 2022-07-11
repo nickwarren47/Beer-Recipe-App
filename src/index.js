@@ -40,8 +40,8 @@ const renderCards = (beers) =>
       popUpBox.style.display = "none";
       document.getElementById('infobox').remove();
     };
-    //im sorry
     beers.forEach(beer => {
+
     const div = document.createElement('div');
     const h4 = document.createElement('h2');
     const img = document.createElement('img');
@@ -65,10 +65,6 @@ const renderCards = (beers) =>
    
     div.append(h4, img, p, btn);
     mainDiv.append(div);
-    // console.log("LOGGING: \n")
-    // console.log(beer.name + '\n')
-    // console.log(beer.image_url + '\n')
-
     //populate key info when image is clicked
     const renderKeyData = () => {
       //pop up textbox that displays key data
@@ -109,57 +105,54 @@ const renderCards = (beers) =>
 
 }
 
+
+
+
+
 const createObjectOfBeerAttributeValues = (data) =>
 {
     let beerAttributes = {abv: [], ibu: [], name: [], hop: [], ph: [], yeast: []};
-    data.forEach((beer) => {beerAttributes.abv.push(beer.abv)
+
+    data.forEach((beer) => 
+    {beerAttributes.abv.push(beer.abv)
     beerAttributes.ibu.push(beer.ibu)
     beerAttributes.name.push(beer.name)
-    beerAttributes.hop.push(beer.hop)
+    beer.ingredients.hops.forEach(id =>
+    {
+        beerAttributes.hop.push(id.name);
+    })
     beerAttributes.ph.push(beer.ph)
     beerAttributes.yeast.push(beer.ingredients.yeast)
     });
-    beerAttributes.abv.sort();
-    beerAttributes.ibu.sort();
+
+    beerAttributes.abv.sort((a,b) => a-b);
+    beerAttributes.ibu.sort((a,b) => a-b);
     beerAttributes.name.sort();
     beerAttributes.hop.sort();
-    beerAttributes.ph.sort();
+    beerAttributes.ph.sort((a,b) => a-b);
     beerAttributes.yeast.sort();
+
     populateDropdown(beerAttributes);
 }
+
 const populateDropdown = (obj) =>
 {
-    obj.abv.forEach(value => {
-        let option = document.createElement('option');
-        option.innerHTML = value;
-        document.getElementById('abv').append(option);
-    })
-    obj.ibu.forEach(value => {
-        let option = document.createElement('option');
-        option.innerHTML = value;
-        document.getElementById('ibu').append(option);
-    })
-    obj.name.forEach(value => {
-        let option = document.createElement('option');
-        option.innerHTML = value;
-        document.getElementById('name').append(option);
-    })
-    obj.hop.forEach(value => {
-        let option = document.createElement('option');
-        option.innerHTML = value;
-        document.getElementById('hop').append(option);
-    })
-    obj.ph.forEach(value => {
-        let option = document.createElement('option');
-        option.innerHTML = value;
-        document.getElementById('ph').append(option);
-    })
-    obj.yeast.forEach(value => {
-        let option = document.createElement('option');
-        option.innerHTML = value;
-        document.getElementById('yeast').append(option);
-    })
-    console.log(obj)
+    let memory = 0;
+    const filterDropdown = (key) =>
+    {
+        obj[key].forEach(value =>
+        {
+            if(memory!==value){
+            let option = document.createElement('option');
+            option.innerHTML = value;
+            document.getElementById(`${key}`).append(option);
+            }
+            memory = value;
+        })
+        memory = 0;
+    }
+    let keys = Object.keys(obj);
+    keys.forEach(key => filterDropdown(key));
 }
 
 fetchBeers(renderCards);
