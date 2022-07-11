@@ -2,7 +2,7 @@ body {
     margin: 0;
     font-family: monospace;
   }
-  
+
   #beer-header {
     /* display: flex; */
     text-align: center;
@@ -11,9 +11,9 @@ body {
     opacity: .8;
     height: 7rem;
     padding: 1rem;
-    
+
   }
-  
+
   #beer-header img {
     height: 6rem;
     width: auto;
@@ -23,12 +23,12 @@ body {
     bottom:10px;
     font-family: Arial, Helvetica, sans-serif;
   }
-  
+
   #beer-collection {
     margin: 2rem;
     text-align: center;
   }
-  
+
   .card {
     text-align: center;
     border: grey solid 1px;
@@ -45,7 +45,7 @@ body {
     height: 12rem;
     width: auto;
   }
-  
+
   button {
     position: relative;
     background-color: #e6ae17;
@@ -57,13 +57,13 @@ body {
     font-size: 18px;
     justify-self: center;
   }
-  
+
   button:hover {
     background-color: whitesmoke;
     border: black solid 1px;
     color: black;
   }
-  
+
   .container {
     padding: 1rem;
     width: stretch;
@@ -72,11 +72,11 @@ body {
     background: #b49e88;
     opacity: .8;
   }
-  
+
   .add-beer-form {
     width: 80%
   }
-  
+
   .submit {
     position: relative;
     background-color: #e6ae17;
@@ -90,14 +90,14 @@ body {
     font-family: monospace;
     margin: 3px;
   }
-  
+
   .submit:hover {
     background-color: whitesmoke;
     border: black solid 1px;
     color: black;
   }
-  
-  
+
+
   .input-text {
     border-radius: 5px;
     height: 2rem;
@@ -106,8 +106,68 @@ body {
     font-family: monospace;
     margin: 3px;
   }
-  
+
   #upvote {
     height: 1rem;
     width: 4rem;
   }
+
+
+/* pop up box */
+  .hover_bkgr_fricc{
+    background:rgba(0,0,0,.4);
+    cursor:pointer;
+    display:none;
+    height:100%;
+    position:fixed;
+    text-align:center;
+    top:0;
+    width:100%;
+    z-index:10000;
+}
+.hover_bkgr_fricc .myPopup{
+    display:inline-block;
+    height:100%;
+    vertical-align:middle;
+}
+
+.hover_bkgr_fricc > div {
+  background-color: #fff;
+  box-shadow: 10px 10px 60px #555;
+  display: inline-block;
+  height: auto;
+  max-width: 551px;
+  min-height: 100px;
+  vertical-align: middle;
+  width: 60%;
+  position: relative;
+  border-radius: 8px;
+  padding: 15px 5%;
+}
+.popupCloseButton {
+  background-color: #fff;
+  border: 3px solid #999;
+  border-radius: 50px;
+  cursor: pointer;
+  display: inline-block;
+  font-family: arial;
+  font-weight: bold;
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 25px;
+  line-height: 30px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+}
+.popupCloseButton:hover {
+  background-color: #ccc;
+}
+.trigger_popup_fricc {
+  cursor: pointer;
+  font-size: 20px;
+  margin: 20px;
+  display: inline-block;
+  font-weight: bold;
+}
