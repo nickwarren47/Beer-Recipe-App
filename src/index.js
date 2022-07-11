@@ -7,16 +7,16 @@ const fetchBeers = (callback) => {
 const initListeners = () =>
 {
     const addBeerButton = document.getElementById("new-beer-btn");
-    const formContainer = document.querySelector(".container");
-
+    const formContainer = document.querySelector(".add-beer-form");
+    const inputDiv = document.querySelector(".container")
     let isForm = false;
 
     addBeerButton.addEventListener("click", () => {
         isForm = !isForm;
       
-        if (!isForm) formContainer.style.display = "none";
+        if (!isForm) inputDiv.style.display = "none";
       
-        if (isForm) formContainer.style.display = "block";
+        if (isForm) inputDiv.style.display = "block";
       });
       
 
@@ -27,8 +27,11 @@ const initListeners = () =>
         newBeer.name = document.getElementById('1').value;
         newBeer.image_url = document.getElementById('2').value;
         newBeer.tagline = document.getElementById('3').value;
+        newBeer.ingredients = []
+        newBeer.ingredients['hops'] = ['n/a']
         renderCards([newBeer]);
     })
+
 }
 
 const detailCards = beer =>
@@ -62,7 +65,6 @@ const detailCards = beer =>
     
     closeButtonContainer.addEventListener("click", () => 
     {
-        console.log(`HELLO!`)
         keyData.style.display = "none";
         popUpBox.style.display = "none";
         newdiv.innerHTML = '';
@@ -102,7 +104,7 @@ const renderCards = (beers) =>
     div.append(h4, img, p, btn);
     mainDiv.append(div);
     })
-
+    createObjectOfBeerAttributeValues(beers)
 }
 
 const createObjectOfBeerAttributeValues = (beers) =>
@@ -114,10 +116,12 @@ const createObjectOfBeerAttributeValues = (beers) =>
     beerAttributes.abv.push(beer.abv)
     beerAttributes.ibu.push(beer.ibu)
     beerAttributes.name.push(beer.name)
+
     beer.ingredients.hops.forEach(id =>
     {
         beerAttributes.hop.push(id.name);
     })
+
     beerAttributes.ph.push(beer.ph)
     beerAttributes.yeast.push(beer.ingredients.yeast)
     });
@@ -131,10 +135,13 @@ const createObjectOfBeerAttributeValues = (beers) =>
 
     populateDropdown(beerAttributes);
 }
-
+const filterBeersFromDropdownByAttribute = (attribute) => 
+{
+    
+}
 const populateDropdown = (obj) =>
 {
-    let memory = 0;
+    let memory;
     const filterDropdown = (key) =>
     {
         obj[key].forEach(value =>
@@ -146,17 +153,17 @@ const populateDropdown = (obj) =>
             }
             memory = value;
         })
-        memory = 0;
+        memory = undefined;
     }
     let keys = Object.keys(obj);
     keys.forEach(key => filterDropdown(key));
 }
 
+
+
+//On page load
+window.onload = () => 
+{
 initListeners();
 fetchBeers(renderCards);
-fetchBeers(createObjectOfBeerAttributeValues);
-
-
-
-
-
+}
