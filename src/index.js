@@ -88,6 +88,17 @@ const renderCards = (beers) =>
 
       keyData.append( data, beerName, abv, ibu, description );
 
+    }
+    
+    img.addEventListener("click", renderKeyData);
+
+    //closes the popup box when its clicked
+
+    const closePopUpBox = () => {
+      popUpBox.style.display = "none";
+      keyData.replaceChildren()
+    };
+    popupCloseButton.addEventListener("click", closePopUpBox);
 
     div.append(h4,img,p,btn);
     mainDiv.append(div);
@@ -151,19 +162,6 @@ fetchBeers(renderCards);
 fetchBeers(createObjectOfBeerAttributeValues);
 
 
-    };
-    img.addEventListener("click", renderKeyData);
-
-    //closes the popup box when its clicked
-
-    const closePopUpBox = () => {
-      popUpBox.style.display = "none";
-      keyData.replaceChildren()
 
 
-    };
-    popupCloseButton.addEventListener("click", closePopUpBox);
-  });
-};
 
-fetchBeers(renderCards);
