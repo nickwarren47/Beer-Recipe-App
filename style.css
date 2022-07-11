@@ -51,10 +51,17 @@ body {
     height: 12rem;
     width: auto;
   }
-
-  button {
+  #page-buttons
+  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+  }
+  .pagebutton
+  {
     position: relative;
-    background-color: #e6ae17;
+    background-color: #7e5a00;
     border: none;
     border-radius: 5px;
     height: 3rem;
@@ -64,6 +71,30 @@ body {
     justify-self: center;
   }
 
+  .bigButton {
+    position: relative;
+    background-color: #7e5a00;
+    border: none;
+    border-radius: 5px;
+    height: 3rem;
+    width: max-content;
+    color: whitesmoke;
+    font-size: 18px;
+    justify-self: center;
+  }
+  .upvoteButton
+  {
+    position: relative;
+    background-color: #7e5a00;
+    border: none;
+    border-radius: 5px;
+    height: 3rem;
+    width: max-content;
+    color: whitesmoke;
+    font-size: 18px;
+    justify-self: center;
+  }
+  
   button:hover {
     background-color: whitesmoke;
     border: black solid 1px;

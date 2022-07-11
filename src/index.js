@@ -1,5 +1,5 @@
-const fetchBeers = (callback) => {
-  fetch(`https://api.punkapi.com/v2/beers`)
+const fetchBeers = (callback,param = 'beers') => {
+  fetch(`https://api.punkapi.com/v2/${param}`)
     .then((data) => data.json())
     .then((beers) => callback(beers));
 };
@@ -84,12 +84,12 @@ const renderCards = (beers) =>
 
     div.style.display = "inline-grid"
     div.style.width = '250px'
+    div.style.height = '420px'
     div.classname = 'card'
 
     btn.classname = 'like-btn'
     btn.textContent = '↑upvote↑';
-    btn.id = 'upvote'
-
+    btn.className = 'upvote'
     h4.innerHTML = beer.name;
 
     img.src = beer.image_url;
@@ -158,7 +158,6 @@ const populateDropdown = (obj) =>
     let keys = Object.keys(obj);
     keys.forEach(key => filterDropdown(key));
 }
-
 
 
 //On page load

@@ -29,6 +29,7 @@
 
     <div class="container">
       <div id = "beer-filter">
+      <form>
       <label for="beers">Search By:</label>
       <select name="abv" id="abv">
         <option>ABV</option>
@@ -48,10 +49,9 @@
       <select name="yeast" id="yeast">
         <option>Yeast Strain</option>
       </select>
-      <br><br>
+      <input type="submit" value="Filter Brews">
       </form>
     </div>
-      <input type="submit" value="Submit">
       <form class="add-beer-form">
         <h3>Create a beer!</h3>
         <input
@@ -79,12 +79,12 @@
           type="submit"
           name="submit"
           value="Create Beer"
-          class="submit"
+          class="bigButton"
         />
       </form>
     </div>
     <p style="text-align:center">
-      <button id="new-beer-btn">Add a new beer!</button>
+      <button id="new-beer-btn" class="bigButton">Add a new beer!</button>
     </p>
 
     <div id="beer-collection"></div>
@@ -93,6 +93,10 @@
       <div id="keyData">
         <div class="popupCloseButton" id="popupCloseButton">&times;</div>
       </div>
+  </div>
+  <div id="page-buttons">
+    <button id="page-back" class="pageButton"><-</button>
+    <button id="page-forward"class="pageButton">-></button>
   </div>
     <script defer type="text/javascript" src="src/index.js"></script>
   </body>
