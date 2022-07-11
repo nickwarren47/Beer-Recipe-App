@@ -1,7 +1,3 @@
-let isForm = false;
-
-const addBeerButton = document.getElementById("new-beer-btn");
-const formContainer = document.querySelector(".container");
 const popUpBox = document.querySelector(".hover_bkgr_fricc");
 const popupCloseButton = document.querySelector(".popupCloseButton");
 const keyData = document.querySelector("#keyData");
@@ -12,34 +8,45 @@ const fetchBeers = (callback) => {
     .then((beers) => callback(beers));
 };
 
-addBeerButton.addEventListener("click", () => {
-  isForm = !isForm;
-
-  if (!isForm) formContainer.style.display = "none";
-
-  if (isForm) formContainer.style.display = "block";
-});
-
-
-formContainer.addEventListener('submit', (event) =>
+const initListeners = () =>
 {
-    event.preventDefault();
-    let newBeer = {};
-    newBeer.name = document.getElementById('1').value;
-    newBeer.image_url = document.getElementById('2').value;
-    newBeer.tagline = document.getElementById('3').value;
-    renderCards([newBeer]);
-})
+    const addBeerButton = document.getElementById("new-beer-btn");
+    const formContainer = document.querySelector(".container");
 
-const mainDiv = document.getElementById('beer-collection');
+    let isForm = false;
+
+    addBeerButton.addEventListener("click", () => {
+        isForm = !isForm;
+      
+        if (!isForm) formContainer.style.display = "none";
+      
+        if (isForm) formContainer.style.display = "block";
+      });
+      
+
+    formContainer.addEventListener('submit', (event) =>
+    {
+        event.preventDefault();
+        let newBeer = {};
+        newBeer.name = document.getElementById('1').value;
+        newBeer.image_url = document.getElementById('2').value;
+        newBeer.tagline = document.getElementById('3').value;
+        renderCards([newBeer]);
+    })
+}
+
+
+
 
 const renderCards = (beers) =>
 {
+    const mainDiv = document.getElementById('beer-collection');
     const closePopUpBox = () => 
     {
       popUpBox.style.display = "none";
       document.getElementById('infobox').remove();
     };
+
     beers.forEach(beer => {
 
     const div = document.createElement('div');
@@ -66,6 +73,7 @@ const renderCards = (beers) =>
     div.append(h4, img, p, btn);
     mainDiv.append(div);
     //populate key info when image is clicked
+
     const renderKeyData = () => {
       //pop up textbox that displays key data
 
@@ -104,7 +112,6 @@ const renderCards = (beers) =>
     })
 
 }
-
 
 
 
@@ -155,6 +162,7 @@ const populateDropdown = (obj) =>
     keys.forEach(key => filterDropdown(key));
 }
 
+initListeners();
 fetchBeers(renderCards);
 fetchBeers(createObjectOfBeerAttributeValues);
 
