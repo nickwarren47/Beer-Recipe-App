@@ -28,6 +28,7 @@
     </div>
 
     <div class="container">
+      <div id = "beer-filter">
       <label for="beers">Search By:</label>
       <select name="abv" id="abv">
         <option>ABV</option>
@@ -49,10 +50,10 @@
       </select>
       <br><br>
       </form>
+    </div>
       <input type="submit" value="Submit">
       <form class="add-beer-form">
         <h3>Create a beer!</h3>
-      </form>
         <input
           id="1"
           type="text"
@@ -90,7 +91,7 @@
     <div class="hover_bkgr_fricc">
       <span class="myPopup"></span>
       <div id="keyData">
-        <div class="popupCloseButton">&times;</div>
+        <div class="popupCloseButton" id="popupCloseButton">&times;</div>
       </div>
   </div>
     <script defer type="text/javascript" src="src/index.js"></script>

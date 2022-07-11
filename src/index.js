@@ -1,41 +1,80 @@
-let isForm = false;
-
-const addBeerButton = document.getElementById("new-beer-btn");
-const formContainer = document.querySelector(".container");
-const popUpBox = document.querySelector(".hover_bkgr_fricc");
-const popupCloseButton = document.querySelector(".popupCloseButton");
-const keyData = document.querySelector("#keyData");
-
 const fetchBeers = (callback) => {
   fetch(`https://api.punkapi.com/v2/beers`)
     .then((data) => data.json())
     .then((beers) => callback(beers));
 };
 
-addBeerButton.addEventListener("click", () => {
-  isForm = !isForm;
-
-  if (!isForm) formContainer.style.display = "none";
-
-  if (isForm) formContainer.style.display = "block";
-});
-
-
-formContainer.addEventListener('submit', (event) =>
+const initListeners = () =>
 {
-    event.preventDefault();
-    let newBeer = {};
-    newBeer.name = document.getElementById('1').value;
-    newBeer.image_url = document.getElementById('2').value;
-    newBeer.tagline = document.getElementById('3').value;
-    renderCards([newBeer]);
-})
+    const addBeerButton = document.getElementById("new-beer-btn");
+    const formContainer = document.querySelector(".add-beer-form");
+    const inputDiv = document.querySelector(".container")
+    let isForm = false;
 
-const mainDiv = document.getElementById('beer-collection');
+    addBeerButton.addEventListener("click", () => {
+        isForm = !isForm;
+      
+        if (!isForm) inputDiv.style.display = "none";
+      
+        if (isForm) inputDiv.style.display = "block";
+      });
+      
+
+    formContainer.addEventListener('submit', (event) =>
+    {
+        event.preventDefault();
+        let newBeer = {};
+        newBeer.name = document.getElementById('1').value;
+        newBeer.image_url = document.getElementById('2').value;
+        newBeer.tagline = document.getElementById('3').value;
+        newBeer.ingredients = []
+        newBeer.ingredients['hops'] = ['n/a']
+        renderCards([newBeer]);
+    })
+
+}
+
+const detailCards = beer =>
+{
+    const popUpBox = document.querySelector(".hover_bkgr_fricc");
+    const keyData = document.getElementById('keyData');
+
+    popUpBox.style.display = "inline";
+
+    keyData.style.display = "inline-block"
+    const data = document.createElement("h2");
+    const beerName = document.createElement("h2");
+    const abv = document.createElement("h3");
+    const ibu = document.createElement("h3");
+    const description = document.createElement("p");
+    const closeButtonContainer = document.getElementById('popupCloseButton');
+
+    data.textContent = `KEY DATA`;
+    beerName.textContent = beer.name;
+    abv.textContent = `ABV: ` + beer.abv;
+    ibu.textContent = `IBU: ` + beer.ibu;
+    description.textContent = `Description: ` + beer.description;
+
+    data.style["text-decoration"] = "underline";
+    closeButtonContainer.className = 'popupCloseButton'
+
+    newdiv = document.createElement('div');
+    newdiv.id = 'infobox'
+    newdiv.append( data, beerName, abv, ibu, description);
+    keyData.append(newdiv);
+    
+    closeButtonContainer.addEventListener("click", () => 
+    {
+        keyData.style.display = "none";
+        popUpBox.style.display = "none";
+        newdiv.innerHTML = '';
+    })
+}
 
 const renderCards = (beers) =>
 {
-    //im sorry
+    const mainDiv = document.getElementById('beer-collection');
+
     beers.forEach(beer => {
     const div = document.createElement('div');
     const h4 = document.createElement('h2');
@@ -57,111 +96,74 @@ const renderCards = (beers) =>
     img.id = "productImage";
     p.innerHTML = beer.tagline;
 
-   
+    img.addEventListener("click", (event) => 
+    {
+        if(event)detailCards(beer)
+    });
+
     div.append(h4, img, p, btn);
     mainDiv.append(div);
-    // console.log("LOGGING: \n")
-    // console.log(beer.name + '\n')
-    // console.log(beer.image_url + '\n')
-
-    //populate key info when image is clicked
-    const renderKeyData = () => {
-      //pop up textbox that displays key data
-
-      popUpBox.style.display = "inline";
-      const data = document.createElement("h2");
-      const beerName = document.createElement("h2");
-      const abv = document.createElement("h3");
-      const ibu = document.createElement("h3");
-      const description = document.createElement("p");
-      const popupCloseButton = document.createElement('div')
-
-      data.textContent = `KEY DATA`;
-      beerName.textContent = beer.name;
-      abv.textContent = `ABV: ` + beer.abv;
-      ibu.textContent = `IBU: ` + beer.ibu;
-      description.textContent = `Description: ` + beer.description;
-    //   popupCloseButton.textContent = '&times;'
-
-      data.style["text-decoration"] = "underline";
-      popupCloseButton.className = 'popupCloseButton'
-
-      keyData.append( data, beerName, abv, ibu, description );
-
-    }
-    
-    img.addEventListener("click", renderKeyData);
-
-    //closes the popup box when its clicked
-
-    const closePopUpBox = () => {
-      popUpBox.style.display = "none";
-      keyData.replaceChildren()
-    };
-    popupCloseButton.addEventListener("click", closePopUpBox);
-
-    div.append(h4,img,p,btn);
-    mainDiv.append(div);
     })
+    createObjectOfBeerAttributeValues(beers)
 }
 
-const createObjectOfBeerAttributeValues = (data) =>
+const createObjectOfBeerAttributeValues = (beers) =>
 {
     let beerAttributes = {abv: [], ibu: [], name: [], hop: [], ph: [], yeast: []};
-    data.forEach((beer) => {beerAttributes.abv.push(beer.abv)
+
+    beers.forEach((beer) => 
+    {
+    beerAttributes.abv.push(beer.abv)
     beerAttributes.ibu.push(beer.ibu)
     beerAttributes.name.push(beer.name)
-    beerAttributes.hop.push(beer.hop)
+
+    beer.ingredients.hops.forEach(id =>
+    {
+        beerAttributes.hop.push(id.name);
+    })
+
     beerAttributes.ph.push(beer.ph)
     beerAttributes.yeast.push(beer.ingredients.yeast)
     });
-    beerAttributes.abv.sort();
-    beerAttributes.ibu.sort();
+
+    beerAttributes.abv.sort((a,b) => a-b);
+    beerAttributes.ibu.sort((a,b) => a-b);
     beerAttributes.name.sort();
     beerAttributes.hop.sort();
-    beerAttributes.ph.sort();
+    beerAttributes.ph.sort((a,b) => a-b);
     beerAttributes.yeast.sort();
+
     populateDropdown(beerAttributes);
+}
+const filterBeersFromDropdownByAttribute = (attribute) => 
+{
+    
 }
 const populateDropdown = (obj) =>
 {
-    obj.abv.forEach(value => {
-        let option = document.createElement('option');
-        option.innerHTML = value;
-        document.getElementById('abv').append(option);
-    })
-    obj.ibu.forEach(value => {
-        let option = document.createElement('option');
-        option.innerHTML = value;
-        document.getElementById('ibu').append(option);
-    })
-    obj.name.forEach(value => {
-        let option = document.createElement('option');
-        option.innerHTML = value;
-        document.getElementById('name').append(option);
-    })
-    obj.hop.forEach(value => {
-        let option = document.createElement('option');
-        option.innerHTML = value;
-        document.getElementById('hop').append(option);
-    })
-    obj.ph.forEach(value => {
-        let option = document.createElement('option');
-        option.innerHTML = value;
-        document.getElementById('ph').append(option);
-    })
-    obj.yeast.forEach(value => {
-        let option = document.createElement('option');
-        option.innerHTML = value;
-        document.getElementById('yeast').append(option);
-    })
-    console.log(obj)
+    let memory;
+    const filterDropdown = (key) =>
+    {
+        obj[key].forEach(value =>
+        {
+            if(memory!==value){
+            let option = document.createElement('option');
+            option.innerHTML = value;
+            document.getElementById(`${key}`).append(option);
+            }
+            memory = value;
+        })
+        memory = undefined;
+    }
+    let keys = Object.keys(obj);
+    keys.forEach(key => filterDropdown(key));
 }
 
+
+
+//On page load
+window.onload = () => 
+{
+initListeners();
 fetchBeers(renderCards);
-fetchBeers(createObjectOfBeerAttributeValues);
-
-
-
-
-
+}
