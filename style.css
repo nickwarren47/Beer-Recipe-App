@@ -33,11 +33,11 @@ body {
     text-align: center;
     border: grey solid 1px;
     padding: 1rem;
-    /* width: 65px;
-    height: 205px; */
     display: inline-block;
     margin: 1rem 2rem;
     box-shadow: 3px 4px #e04b52;
+    display: inline-grid;
+    width: 250px;
   }
 
   .beer-avatar {
@@ -113,6 +113,7 @@ body {
   }
 
 
+
 /* pop up box */
   .hover_bkgr_fricc{
     background:rgba(0,0,0,.4);
@@ -171,3 +172,11 @@ body {
   display: inline-block;
   font-weight: bold;
 }
+
+  img {
+    height: 250px;
+    width: 50%;
+    margin: auto;
+    display: block;
+  }
+

@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+      <!-- Display beer -->
+    <div id="beer-detail">
+      <img class="beer-image" src="./assets/image-placeholder.jpg" alt="Insert Name Here" />
+    </div>
     <div id="beer-header">
       <div>
       <img
@@ -21,9 +25,31 @@
     </div>
 
     <div class="container">
+      <label for="beers">Search By:</label>
+      <select name="abv" id="abv">
+        <option>ABV</option>
+      </select>
+      <select name="ibu" id="ibu">
+        <option>IBU</option>
+      </select>
+      <select name="name" id="name">
+        <option>Beer Name</option>
+      </select>
+      <select name="hop" id="hop">
+        <option>Hops Variety</option>
+      </select>
+      <select name="ph" id="ph">
+        <option>pH Value</option>
+      </select>
+      <select name="yeast" id="yeast">
+        <option>Yeast Strain</option>
+      </select>
+      <br><br>
+      </form>
       <form class="add-beer-form">
         <h3>Create a beer!</h3>
-
+      </form>
+        <input type="submit" value="Submit">
         <input
           id="1"
           type="text"
@@ -42,8 +68,10 @@
           class="input-text"
         />
         <br />
+        <textarea id="3" name="3"placeholder="Additional Info/Ingredients"cols="50"></textarea>
+        <br/>
         <input
-          id="3"
+          id="4"
           type="submit"
           name="submit"
           value="Create Beer"
