@@ -8,7 +8,10 @@ const initListeners = () =>
 {
     const addBeerButton = document.getElementById("new-beer-btn");
     const formContainer = document.querySelector(".add-beer-form");
-    const inputDiv = document.querySelector(".container")
+    const inputDiv = document.querySelector(".container");
+    const forwardButton = document.getElementById('page-forward');
+    const backButton = document.getElementById('page-back');
+
     let isForm = false;
 
     addBeerButton.addEventListener("click", () => {
@@ -32,6 +35,23 @@ const initListeners = () =>
         renderCards([newBeer]);
     })
 
+    let pageNumber = 1;
+
+    forwardButton.addEventListener('click', () =>
+    {
+        pageNumber++;
+        fetchBeers(renderCards,`beers?page=${pageNumber}`)
+        window.scrollTo(0,0)
+    })
+    backButton.addEventListener('click',() =>
+    {
+        if(pageNumber >= 0)
+        {
+        pageNumber--;
+        fetchBeers(renderCards,`beers?page=${pageNumber}`)
+        window.scrollTo(0,0)
+        }
+    })
 }
 
 const detailCards = beer =>
@@ -74,7 +94,7 @@ const detailCards = beer =>
 const renderCards = (beers) =>
 {
     const mainDiv = document.getElementById('beer-collection');
-
+    mainDiv.innerHTML = '';
     beers.forEach(beer => {
     const div = document.createElement('div');
     const h4 = document.createElement('h2');
@@ -84,7 +104,7 @@ const renderCards = (beers) =>
 
     div.style.display = "inline-grid"
     div.style.width = '250px'
-    div.style.height = '420px'
+    div.style.height = '550px'
     div.classname = 'card'
 
     btn.classname = 'like-btn'
