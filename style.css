@@ -2,6 +2,12 @@ body {
     margin: 0;
     font-family: monospace;
   }
+  #coverPhoto{
+    height: 15%;
+    width: 100%;
+    margin: 0;
+  }
+
 
   #beer-header {
     /* display: flex; */
