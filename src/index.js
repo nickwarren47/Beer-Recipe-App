@@ -1,7 +1,3 @@
-const popUpBox = document.querySelector(".hover_bkgr_fricc");
-const popupCloseButton = document.querySelector(".popupCloseButton");
-const keyData = document.querySelector("#keyData");
-
 const fetchBeers = (callback) => {
   fetch(`https://api.punkapi.com/v2/beers`)
     .then((data) => data.json())
@@ -35,20 +31,49 @@ const initListeners = () =>
     })
 }
 
+const detailCards = beer =>
+{
+    const popUpBox = document.querySelector(".hover_bkgr_fricc");
+    const keyData = document.getElementById('keyData');
 
+    popUpBox.style.display = "inline";
 
+    keyData.style.display = "inline-block"
+    const data = document.createElement("h2");
+    const beerName = document.createElement("h2");
+    const abv = document.createElement("h3");
+    const ibu = document.createElement("h3");
+    const description = document.createElement("p");
+    const closeButtonContainer = document.getElementById('popupCloseButton');
+
+    data.textContent = `KEY DATA`;
+    beerName.textContent = beer.name;
+    abv.textContent = `ABV: ` + beer.abv;
+    ibu.textContent = `IBU: ` + beer.ibu;
+    description.textContent = `Description: ` + beer.description;
+
+    data.style["text-decoration"] = "underline";
+    closeButtonContainer.className = 'popupCloseButton'
+
+    newdiv = document.createElement('div');
+    newdiv.id = 'infobox'
+    newdiv.append( data, beerName, abv, ibu, description);
+    keyData.append(newdiv);
+    
+    closeButtonContainer.addEventListener("click", () => 
+    {
+        console.log(`HELLO!`)
+        keyData.style.display = "none";
+        popUpBox.style.display = "none";
+        newdiv.innerHTML = '';
+    })
+}
 
 const renderCards = (beers) =>
 {
     const mainDiv = document.getElementById('beer-collection');
-    const closePopUpBox = () => 
-    {
-      popUpBox.style.display = "none";
-      document.getElementById('infobox').remove();
-    };
 
     beers.forEach(beer => {
-
     const div = document.createElement('div');
     const h4 = document.createElement('h2');
     const img = document.createElement('img');
@@ -69,59 +94,24 @@ const renderCards = (beers) =>
     img.id = "productImage";
     p.innerHTML = beer.tagline;
 
-   
+    img.addEventListener("click", (event) => 
+    {
+        if(event)detailCards(beer)
+    });
+
     div.append(h4, img, p, btn);
-    mainDiv.append(div);
-    //populate key info when image is clicked
-
-    const renderKeyData = () => {
-      //pop up textbox that displays key data
-
-      popUpBox.style.display = "inline";
-      const data = document.createElement("h2");
-      const beerName = document.createElement("h2");
-      const abv = document.createElement("h3");
-      const ibu = document.createElement("h3");
-      const description = document.createElement("p");
-      const popupCloseButton = document.createElement('div')
-
-      data.textContent = `KEY DATA`;
-      beerName.textContent = beer.name;
-      abv.textContent = `ABV: ` + beer.abv;
-      ibu.textContent = `IBU: ` + beer.ibu;
-      description.textContent = `Description: ` + beer.description;
-    //   popupCloseButton.textContent = '&times;'
-
-      data.style["text-decoration"] = "underline";
-      popupCloseButton.className = 'popupCloseButton'
-
-      newdiv = document.createElement('div');
-      newdiv.id = 'infobox'
-      newdiv.append( data, beerName, abv, ibu, description);
-      keyData.append(newdiv);
-
-    }
-    
-    img.addEventListener("click", renderKeyData);
-
-    //closes the popup box when its clicked
-
-    popupCloseButton.addEventListener("click", closePopUpBox);
-    div.append(h4,img,p,btn);
     mainDiv.append(div);
     })
 
 }
 
-
-
-
-const createObjectOfBeerAttributeValues = (data) =>
+const createObjectOfBeerAttributeValues = (beers) =>
 {
     let beerAttributes = {abv: [], ibu: [], name: [], hop: [], ph: [], yeast: []};
 
-    data.forEach((beer) => 
-    {beerAttributes.abv.push(beer.abv)
+    beers.forEach((beer) => 
+    {
+    beerAttributes.abv.push(beer.abv)
     beerAttributes.ibu.push(beer.ibu)
     beerAttributes.name.push(beer.name)
     beer.ingredients.hops.forEach(id =>
