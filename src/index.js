@@ -57,30 +57,3 @@ const renderCards = (beers) =>
 
 fetchBeers(renderCards);
 
-
-
-
-
-
-
-
-// const mainDiv = document.getElementById('toy-collection')
-
-//     toys.forEach(toy => {
-
-
-//       btn.className = 'like-btn';
-//       div.className = 'card'
-//       btn.setAttribute('id', toy.id);
-
-//       h2.textContent = toy.name;
-//       img.src = toy.image;
-
-//       img.style.height = '250';
-//       img.style.width = '250px';
-
-//       p.textContent = `${toy.likes} likes`;
-//       btn.textContent = 'like';
-//       div.append(h2,img,p,btn);
-//       mainDiv.append(div)
-//       btn.setAttribute('type','button');
