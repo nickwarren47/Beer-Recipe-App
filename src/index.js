@@ -37,13 +37,8 @@ const renderCards = (beers) =>
     div.style.width = '250px'
     div.classname = 'card'
     btn.classname = 'like-btn'
-    img.style.height = '250px';
-    img.style.width = '50%';
-    img.style.margin = 'auto';
-    img.style.display = 'block';
-
+    btn.textContent = '↑upvote↑';
     h4.innerHTML = beer.name;
-    btn.textcontent = '↑upvote↑';
     img.src = beer.image_url;
     p.innerHTML = beer.tagline;
     btn.id = 'upvote'

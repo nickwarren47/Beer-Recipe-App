@@ -11,7 +11,6 @@ body {
     opacity: .8;
     height: 7rem;
     padding: 1rem;
-    
   }
   
   #beer-header img {
@@ -33,11 +32,11 @@ body {
     text-align: center;
     border: grey solid 1px;
     padding: 1rem;
-    /* width: 65px;
-    height: 205px; */
     display: inline-block;
     margin: 1rem 2rem;
     box-shadow: 3px 4px #e04b52;
+    display: inline-grid;
+    width: 250px;
   }
 
   .beer-avatar {
@@ -110,4 +109,10 @@ body {
   #upvote {
     height: 1rem;
     width: 4rem;
+  }
+  img {
+    height: 250px;
+    width: 50%;
+    margin: auto;
+    display: block;
   }
