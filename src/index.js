@@ -1,7 +1,8 @@
 const fetchBeers = (callback, param = "beers") => {
   fetch(`https://api.punkapi.com/v2/${param}`)
     .then((data) => data.json())
-    .then((beers) => callback(beers));
+    .then((beers) => callback(beers))
+    .then(console.log("searching with param: ", param));
 };
 
 const initListeners = () => {
@@ -33,41 +34,60 @@ const initListeners = () => {
   });
 
   let pageNumber = 1;
+  let param = "";
 
   forwardButton.addEventListener("click", () => {
-    mainDiv.innerHTML = "";
-    pageNumber++;
-    fetchBeers(renderCards, `beers?page=${pageNumber}`);
-    window.scrollTo(0, 0);
+    if(param)
+    {
+        pageNumber++;
+        param = "&" + param;
+        mainDiv.innerHTML = "";
+        fetchBeers(renderCards, `beers?page=${pageNumber}${param}`)
+    }
+    else
+    {
+        pageNumber++;
+        mainDiv.innerHTML = "";
+        fetchBeers(renderCards, `beers?page=${pageNumber}`);
+        window.scrollTo(0, 0);
+    }
   });
 
   filterForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    let param = "";
     const dropDown = document.getElementById("param");
     const search = document.getElementById("search")
     if(search.value !== '')
     {
         if(dropDown.value === "Beer Name")
         {
-            param = `beers?${search.value}`
+            mainDiv.innerHTML ='';
+            param = `beers?beer_name=${search.value}`
             fetchBeers(renderCards,param);
         }
         if(dropDown.value === "Yeast Name")
         {
-            param = "yeast"
+            mainDiv.innerHTML ='';
+            param = `beers?yeast=${search.value}`
+            fetchBeers(renderCards,param);
         }
         if(dropDown.value === "Hops Variety")
         {
-            param = "hops"
+            mainDiv.innerHTML ='';
+            param = `beers?hops=${search.value}`
+            fetchBeers(renderCards,param);
         }
         if(dropDown.value === "Malt Name")
         {
-            param = "malt"
+            mainDiv.innerHTML ='';
+            param = `beers?malt=${search.value}`
+            fetchBeers(renderCards,param);
         }
         if(dropDown.value === "Food Pairing")
         {
-            param = "food"
+            mainDiv.innerHTML ='';
+            param = `beers?food=${search.value}`
+            fetchBeers(renderCards,param);
         }
     }
   });
@@ -77,9 +97,7 @@ const detailCards = (beer) => {
   const popUpBox = document.querySelector(".hover_bkgr_fricc");
   const keyData = document.getElementById("keyData");
 
-  popUpBox.style.display = "inline";
 
-  keyData.style.display = "inline-block";
   const data = document.createElement("h2");
   const beerName = document.createElement("h2");
   const abv = document.createElement("h3");
@@ -100,21 +118,26 @@ const detailCards = (beer) => {
   ibu.textContent = `IBU: ` + beer.ibu;
   volume.textContent = `Volume: ` + beer.volume.value + " " + beer.volume.unit;
   ph.textContent = `ph: ` + beer.ph;
+
   mashTemp.textContent =
   "Mash Temp: " +
   beer.method["mash_temp"][0].temp.value +
   " " +
   beer.method["mash_temp"][0].temp.unit;
+
   ferment.textContent =
   "Fermentation: " +
   beer.method.fermentation.temp.value +
   " " +
   beer.method.fermentation.temp.unit;
+
   malts.textContent = "Malts: " + beer.ingredients.malt.map((element) => " " + element.name)
   hops.textContent = "Hops: " + beer.ingredients.hops.map((element) => " " + element.name)
   yeast.textContent = "Yeast: " + beer.ingredients.yeast
   description.textContent = `Description: ` + beer.description;
 
+  popUpBox.style.display = "inline";
+  keyData.style.display = "inline-block";
   data.style["text-decoration"] = "underline";
   closeButtonContainer.className = "popupCloseButton";
 
