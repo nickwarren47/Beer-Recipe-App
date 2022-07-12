@@ -5,8 +5,9 @@ const fetchBeers = (callback, param = "beers", url ='https://api.punkapi.com/v2/
     .then(console.log("searching with param: ", param));
 };
 
+
 const postSavedBeers = (object) => {
-    fetch("http://localhost:3000/savedBeer", {
+    fetch(savedBeersURL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -23,6 +24,8 @@ const initListeners = () => {
   const filterForm = document.getElementById("beer-filter");
   const mainDiv = document.getElementById("beer-collection");
   const header = document.getElementById("beer-story");
+  const savedBeersURL = "http://localhost:3000/savedBeer"
+  const savedBeerButton = document.querySelector("#saved-beer-btn")
   let isForm = false;
 
   header.addEventListener("click", () => {
@@ -99,6 +102,11 @@ const initListeners = () => {
     search.value = "";
     dropDown.value = "Beer Name";
   });
+
+  savedBeerButton.addEventListener('click', ()=> {
+    mainDiv.innerHTML = ""
+    fetchBeers(renderCards, "", savedBeersURL)
+  })
 };
 
 const detailCards = (beer) => {
@@ -214,3 +222,7 @@ window.onload = () => {
   initListeners();
   fetchBeers(renderCards);
 };
+
+
+
+
