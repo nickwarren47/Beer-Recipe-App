@@ -229,9 +229,14 @@ const renderCards = async (beers) => {
     {
         const deleteButton = document.createElement('button');
         deleteButton.textContent = "X";
+        deleteButton.className = 'delete-btn';
+        deleteButton.addEventListener('click', () =>{
+            div.remove();
+        })
         div.append(deleteButton);
     }
   });
+
   savedBeerButton.addEventListener('click', ()=> {
     mainDiv.innerHTML = ""
     doDelete = !doDelete;
