@@ -18,7 +18,7 @@ const initListeners = () => {
   header.addEventListener("click", () => {
     window.location.replace("http://127.0.0.1:5500/index.html");
   })
-  
+
   addBeerButton.addEventListener("click", () => {
     isForm = !isForm;
 
@@ -186,7 +186,7 @@ const renderCards = (beers) => {
     div.id = "card";
 
     btn.classname = "like-btn";
-    btn.textContent = "↑upvote↑";
+    btn.textContent = "Save Beer";
     btn.className = "upvote";
     h4.innerHTML = beer.name;
 
@@ -197,6 +197,23 @@ const renderCards = (beers) => {
     img.addEventListener("click", (event) => {
       if (event) detailCards(beer);
     });
+
+
+    btn.addEventListener('click', ()=> {
+        console.log(h4)
+        const newSavedBeer = {
+            "name": beer.name
+        }
+        fetch('http://localhost:3000/savedBeer',{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newSavedBeer)
+        })
+        console.log(newSavedBeer)
+
+    })
 
     div.append(h4, img, p, btn);
     mainDiv.append(div);
