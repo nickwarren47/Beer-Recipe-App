@@ -109,7 +109,6 @@ const detailCards = beer =>
 const renderCards = (beers) =>
 {
     const mainDiv = document.getElementById('beer-collection');
-    mainDiv.innerHTML = '';
     beers.forEach(beer => {
     const div = document.createElement('div');
     const h4 = document.createElement('h2');
