@@ -189,17 +189,19 @@ document.querySelectorAll(".nav-link").forEach(n => n.addEventListener('click', 
     navMenu.classList.remove("active");
 }))
 
-const renderCards = (beers) => {
+let doDelete = false;
+
+const renderCards = async (beers) => {
   const mainDiv = document.getElementById("beer-collection");
   const savedBeersURL = "http://localhost:3000/savedBeer";
   const savedBeerButton = document.querySelector("#saved-beer-btn");
+
   beers.forEach((beer) => {
     const div = document.createElement("div");
     const h4 = document.createElement("h2");
     const img = document.createElement("img");
     const p = document.createElement("p");
     const btn = document.createElement("button");
-
     div.style.display = "inline-grid";
     div.id = "card";
 
@@ -220,12 +222,20 @@ const renderCards = (beers) => {
         postSavedBeers(beer)
         console.log(beer)
     })
+    
     div.append(h4, img, p, btn);
     mainDiv.append(div);
+    if(doDelete)
+    {
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = "X";
+        div.append(deleteButton);
+    }
   });
   savedBeerButton.addEventListener('click', ()=> {
     mainDiv.innerHTML = ""
-    fetchBeers(renderCards, "", savedBeersURL)
+    doDelete = !doDelete;
+    fetchBeers(renderCards, "", savedBeersURL);
   })
 };
 
