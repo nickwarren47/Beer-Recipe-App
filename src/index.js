@@ -11,6 +11,7 @@ const initListeners = () =>
     const inputDiv = document.querySelector(".container");
     const forwardButton = document.getElementById('page-forward');
     const backButton = document.getElementById('page-back');
+    const filterForm = document.getElementById('beer-filter');
 
     let isForm = false;
 
@@ -52,6 +53,20 @@ const initListeners = () =>
         window.scrollTo(0,0)
         }
     })
+    filterForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const abv = document.getElementById('abv').value;
+        const ibu = document.getElementById('ibu').value;
+        const beerName = document.getElementById('name').value;
+        const hops = document.getElementById('hop').value;
+        const pH = document.getElementById('ph').value;
+        const yeast = document.getElementById('yeast').value;
+        
+        if(abv !== "ABV" && ibu !== "IBU" && beerName !== "Beer Name" && hops !== "Hops Variety" && pH !== "pH Value" && yeast !== "Yeast Strain")
+        console.log(abv, ibu, beerName, hops, pH, yeast)
+
+    })
+
 }
 
 const detailCards = beer =>
@@ -155,9 +170,10 @@ const createObjectOfBeerAttributeValues = (beers) =>
 
     populateDropdown(beerAttributes);
 }
-const filterBeersFromDropdownByAttribute = (attribute,value = 5) => 
+const filterBeersFromDropdownByAttribute = (attribute, value = 5) => 
+    console.log(fetchBeers(renderCards, `?abv_gt=${value}`))
 {
-    console.log(fetchBeers(renderCards,`?abv_gt=${value}`))
+    
 }
 const populateDropdown = (obj) =>
 {
@@ -179,9 +195,28 @@ const populateDropdown = (obj) =>
     keys.forEach(key => filterDropdown(key));
 }
 
+
 //On page load
 window.onload = () => 
 {
 initListeners();
 fetchBeers(renderCards);
+// fetchBeers(postRecipesFromAPI);
 }
+
+// function postRecipesFromAPI(array){
+//     array.forEach((object) => {
+//         // let count = 1;
+//         fetch(`http://localhost:3000/beer-recipes`, {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type':'application/json'
+//             },  
+//             body: 
+//                 JSON.stringify(object),
+//         })
+//         .then(res => res.json())
+//         .then(data => console.log(data));
+//         // count++;
+//     })  
+// }
