@@ -106,8 +106,14 @@ body {
     width: 90%;
     margin-left:auto;
     margin-right: auto;
+    cursor: pointer;
   }
-
+  #beer-detail img{
+    max-height: 400px;
+    max-width:50%;
+    margin: auto;
+    display: block;
+  }
   #beer-header {
     /* display: flex; */
     text-align: center;
@@ -136,6 +142,7 @@ body {
   #beer-collection {
     margin: 2rem;
     text-align: center;
+    position: relative;
   }
 
   #card {
@@ -144,12 +151,49 @@ body {
     background-color: white;
     padding: 1rem;
     display: inline-block;
+    width: 75%;
+    height: 75%;
     margin: 1rem 2rem;
     box-shadow: 3px 4px #ccc;
     display: inline-grid;
-    width: 250px;
     border-radius: 2px; 
-    border-color:black
+    border-color:black;
+    max-width:250px;
+    max-height:550px;
+    
+  }
+  #card h2
+  {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; 
+  }
+  #card p{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; 
+  }
+  #card img {
+    height: 24rem;
+    width: 6rem;
+    max-height: 400px;
+    max-width:50%;
+    margin: auto;
+  }
+  img:hover
+  {
+    cursor:pointer;
+  }
+  .container {
+    padding: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50rem;
+    height: auto;
+    display: none;
+    background-color: #FFCC99;
+    border-radius: 50px;
+    
   }
 
   .beer-avatar {
@@ -205,6 +249,8 @@ body {
       -webkit-user-select: none;
       touch-action: manipulation;
       border-color: black; 
+      max-height: 37.4px;
+      
     }
 
   @media (min-width: 768px) {
@@ -223,17 +269,6 @@ body {
     color: black;
   }
 
-  .container {
-    padding: 1rem;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50rem;
-    height: auto;
-    display: none;
-    background-color: #FFCC99;
-    border-radius: 50px;
-    
-  }
 
 
   .add-beer-form {
@@ -274,7 +309,9 @@ body {
     height: 1rem;
     width: 4rem;
   }
-
+  #beer-filter select:hover {
+    cursor: pointer;
+  }
 /* pop up box */
   .hover_bkgr_fricc{
     background:rgba(0,0,0,.4);
@@ -334,12 +371,7 @@ body {
   font-weight: bold;
 }
 
-  img {
-    height: 400px;
-    width: 50%;
-    margin: auto;
-    display: block;
-  }
+
 
   html { 
     background-image: linear-gradient(45deg, transparent 20%, black 25%, transparent 25%),

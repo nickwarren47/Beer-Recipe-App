@@ -1,8 +1,20 @@
-const fetchBeers = (callback, param = "beers") => {
-  fetch(`https://api.punkapi.com/v2/${param}`)
+const fetchBeers = (callback, param = "beers", url ='https://api.punkapi.com/v2/') => {
+  fetch(`${url}${param}`)
     .then((data) => data.json())
-    .then((beers) => callback(beers));
+    .then((beers) => callback(beers))
+    .then(console.log("searching with param: ", param));
 };
+
+
+const postSavedBeers = (object) => {
+    fetch(savedBeersURL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(object),
+    });
+  };
 
 const initListeners = () => {
   const addBeerButton = document.getElementById("new-beer-btn");
@@ -11,7 +23,14 @@ const initListeners = () => {
   const forwardButton = document.getElementById("page-forward");
   const filterForm = document.getElementById("beer-filter");
   const mainDiv = document.getElementById("beer-collection");
+  const header = document.getElementById("beer-story");
+  const savedBeersURL = "http://localhost:3000/savedBeer"
+  const savedBeerButton = document.querySelector("#saved-beer-btn")
   let isForm = false;
+
+  header.addEventListener("click", () => {
+    window.location.replace("http://127.0.0.1:5500/index.html");
+  });
 
   addBeerButton.addEventListener("click", () => {
     isForm = !isForm;
@@ -33,53 +52,67 @@ const initListeners = () => {
   });
 
   let pageNumber = 1;
+  let param = "";
 
   forwardButton.addEventListener("click", () => {
-    mainDiv.innerHTML = "";
-    pageNumber++;
-    fetchBeers(renderCards, `beers?page=${pageNumber}`);
-    window.scrollTo(0, 0);
+    if (param) {
+      pageNumber++;
+      param = "&" + param;
+      mainDiv.innerHTML = "";
+      fetchBeers(renderCards, `beers?page=${pageNumber}${param}`);
+    } else {
+      pageNumber++;
+      mainDiv.innerHTML = "";
+      fetchBeers(renderCards, `beers?page=${pageNumber}`);
+      window.scrollTo(0, 0);
+    }
   });
 
   filterForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    let param = "";
     const dropDown = document.getElementById("param");
-    const search = document.getElementById("search")
-    if(search.value !== '')
-    {
-        if(dropDown.value === "Beer Name")
-        {
-            param = `beers?${search.value}`
-            fetchBeers(renderCards,param);
-        }
-        if(dropDown.value === "Yeast Name")
-        {
-            param = "yeast"
-        }
-        if(dropDown.value === "Hops Variety")
-        {
-            param = "hops"
-        }
-        if(dropDown.value === "Malt Name")
-        {
-            param = "malt"
-        }
-        if(dropDown.value === "Food Pairing")
-        {
-            param = "food"
-        }
+    const search = document.getElementById("search");
+    if (search.value !== "") {
+      if (dropDown.value === "Beer Name") {
+        mainDiv.innerHTML = "";
+        param = `beers?beer_name=${search.value}`;
+        fetchBeers(renderCards, param);
+      }
+      if (dropDown.value === "Yeast Name") {
+        mainDiv.innerHTML = "";
+        param = `beers?yeast=${search.value}`;
+        fetchBeers(renderCards, param);
+      }
+      if (dropDown.value === "Hops Variety") {
+        mainDiv.innerHTML = "";
+        param = `beers?hops=${search.value}`;
+        fetchBeers(renderCards, param);
+      }
+      if (dropDown.value === "Malt Name") {
+        mainDiv.innerHTML = "";
+        param = `beers?malt=${search.value}`;
+        fetchBeers(renderCards, param);
+      }
+      if (dropDown.value === "Food Pairing") {
+        mainDiv.innerHTML = "";
+        param = `beers?food=${search.value}`;
+        fetchBeers(renderCards, param);
+      }
     }
+    search.value = "";
+    dropDown.value = "Beer Name";
   });
+
+  savedBeerButton.addEventListener('click', ()=> {
+    mainDiv.innerHTML = ""
+    fetchBeers(renderCards, "", savedBeersURL)
+  })
 };
 
 const detailCards = (beer) => {
   const popUpBox = document.querySelector(".hover_bkgr_fricc");
   const keyData = document.getElementById("keyData");
 
-  popUpBox.style.display = "inline";
-
-  keyData.style.display = "inline-block";
   const data = document.createElement("h2");
   const beerName = document.createElement("h2");
   const abv = document.createElement("h3");
@@ -92,7 +125,7 @@ const detailCards = (beer) => {
   const closeButtonContainer = document.getElementById("popupCloseButton");
   const malts = document.createElement("h3");
   const hops = document.createElement("h3");
-  const yeast = document.createElement("h3")
+  const yeast = document.createElement("h3");
 
   data.textContent = `KEY DATA`;
   beerName.textContent = beer.name;
@@ -100,21 +133,28 @@ const detailCards = (beer) => {
   ibu.textContent = `IBU: ` + beer.ibu;
   volume.textContent = `Volume: ` + beer.volume.value + " " + beer.volume.unit;
   ph.textContent = `ph: ` + beer.ph;
+
   mashTemp.textContent =
-  "Mash Temp: " +
-  beer.method["mash_temp"][0].temp.value +
-  " " +
-  beer.method["mash_temp"][0].temp.unit;
+    "Mash Temp: " +
+    beer.method["mash_temp"][0].temp.value +
+    " " +
+    beer.method["mash_temp"][0].temp.unit;
+
   ferment.textContent =
-  "Fermentation: " +
-  beer.method.fermentation.temp.value +
-  " " +
-  beer.method.fermentation.temp.unit;
-  malts.textContent = "Malts: " + beer.ingredients.malt.map((element) => " " + element.name)
-  hops.textContent = "Hops: " + beer.ingredients.hops.map((element) => " " + element.name)
-  yeast.textContent = "Yeast: " + beer.ingredients.yeast
+    "Fermentation: " +
+    beer.method.fermentation.temp.value +
+    " " +
+    beer.method.fermentation.temp.unit;
+
+  malts.textContent =
+    "Malts: " + beer.ingredients.malt.map((element) => " " + element.name);
+  hops.textContent =
+    "Hops: " + beer.ingredients.hops.map((element) => " " + element.name);
+  yeast.textContent = "Yeast: " + beer.ingredients.yeast;
   description.textContent = `Description: ` + beer.description;
 
+  popUpBox.style.display = "inline";
+  keyData.style.display = "inline-block";
   data.style["text-decoration"] = "underline";
   closeButtonContainer.className = "popupCloseButton";
 
@@ -165,12 +205,10 @@ const renderCards = (beers) => {
     const btn = document.createElement("button");
 
     div.style.display = "inline-grid";
-    div.style.width = "250px";
-    div.style.height = "550px";
     div.id = "card";
 
     btn.classname = "like-btn";
-    btn.textContent = "↑upvote↑";
+    btn.textContent = "Save Beer";
     btn.className = "upvote";
     h4.innerHTML = beer.name;
 
@@ -182,10 +220,13 @@ const renderCards = (beers) => {
       if (event) detailCards(beer);
     });
 
+    btn.addEventListener("click", () => {
+        postSavedBeers(beer)
+        console.log(beer)
+    })
     div.append(h4, img, p, btn);
     mainDiv.append(div);
   });
-
 };
 
 //On page load
@@ -193,5 +234,7 @@ window.onload = () => {
   initListeners();
   fetchBeers(renderCards);
 };
+
+
 
 
