@@ -13,17 +13,17 @@
       <nav class="navbar">
         <a href="#" class="nav-branding">BEAST BREWER</a>
         <ul class="nav-menu">
-          <li class="nav-item">
+          <li class="nav-item" id="home">
             <a href="#" class="nav-link">HOME</a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">ABOUT APP</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">DEVELOPERS</a>
+            <a href="#" class="nav-link" id="new-beer-btn">ADD BEER</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">SAVED BEERS</a>
+            <a href="#" class="nav-link" id="saved-beer-btn">SAVED BEERS</a>
           </li>
         </ul>
         <div class="hamburger">
@@ -43,60 +43,53 @@
       
     </div>
     <div position="fixed"><background id="background" ></background></div>
-
+    <div class="container">
+      <div id = "beer-filter">
+      <form>
+      <label for="beers">Search By:</label>
+      <select id="param">
+        <option>Beer Name</option>
+        <option>Yeast Name</option>
+        <option>Hops Variety</option>
+        <option>Malt Name</option>
+        <option>Food pairing</option>
+      </select>
+      <input type="text" placeholder="search" id="search">
+      <input type="submit" value="Filter Brews">
+      </form>
+    </div>
+      <form class="add-beer-form">
+        <h3>Create a beer!</h3>
+        <input
+          id="1"
+          type="text"
+          name="name"
+          value=""
+          placeholder="Enter a beer name..."
+          class="input-text"
+        />
+        <br />
+        <input
+          id="2"
+          type="text"
+          name="image"
+          value=""
+          placeholder="Enter a beer image URL..."
+          class="input-text"
+        />
+        <br />
+        <textarea id="3" name="3"placeholder="Additional Info/Ingredients"cols="50"></textarea>
+        <br/>
+        <input
+          id="4"
+          type="submit"
+          name="submit"
+          value="Create Beer"
+          class="bigButton"
+        />
+      </form>
+    </div>
     <div id="beer-collection">
-      <div id="beer-story">
-        <h1>Welcome to Beast Brewer, the Best Online Brewer's Cookbook</h1>
-      </div>
-      <div class="container">
-        <div id = "beer-filter">
-        <form>
-        <label for="beers">Search By:</label>
-        <select id="param">
-          <option>Beer Name</option>
-          <option>Yeast Name</option>
-          <option>Hops Variety</option>
-          <option>Malt Name</option>
-          <option>Food pairing</option>
-        </select>
-        <input type="text" placeholder="search" id="search">
-        <input type="submit" value="Filter Brews">
-        </form>
-      </div>
-        <form class="add-beer-form">
-          <h3>Create a beer!</h3>
-          <input
-            id="1"
-            type="text"
-            name="name"
-            value=""
-            placeholder="Enter a beer name..."
-            class="input-text"
-          />
-          <br />
-          <input
-            id="2"
-            type="text"
-            name="image"
-            value=""
-            placeholder="Enter a beer image URL..."
-            class="input-text"
-          />
-          <br />
-          <textarea id="3" name="3"placeholder="Additional Info/Ingredients"cols="50"></textarea>
-          <br/>
-          <input
-            id="4"
-            type="submit"
-            name="submit"
-            value="Create Beer"
-            class="bigButton"
-          />
-        </form>
-      </div>
-      
-      <button id="new-beer-btn" class="bigButton">Add a new beer!</button>
-      <br>
     </div>
     <div class="hover_bkgr_fricc">
       <span class="myPopup"></span>
@@ -107,9 +100,6 @@
   <div id="page-buttons">
     <button id="page-forward"class="pageButton">more recipes</button>
   </div>
-  <p style="text-align:center">
-    <button id="saved-beer-btn" class="bigButton">Saved Beer</button>
-  </p>
     <script defer type="text/javascript" src="src/index.js"></script>
   </body>
 </html>
