@@ -40,24 +40,36 @@ const initListeners = () => {
     fetchBeers(renderCards, `beers?page=${pageNumber}`);
     window.scrollTo(0, 0);
   });
+
   filterForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    const abv = document.getElementById("abv").value;
-    const ibu = document.getElementById("ibu").value;
-    const beerName = document.getElementById("name").value;
-    const hops = document.getElementById("hop").value;
-    const pH = document.getElementById("ph").value;
-    const yeast = document.getElementById("yeast").value;
-
-    if (
-      abv !== "ABV" &&
-      ibu !== "IBU" &&
-      beerName !== "Beer Name" &&
-      hops !== "Hops Variety" &&
-      pH !== "pH Value" &&
-      yeast !== "Yeast Strain"
-    )
-      console.log(abv, ibu, beerName, hops, pH, yeast);
+    let param = "";
+    const dropDown = document.getElementById("param");
+    const search = document.getElementById("search")
+    if(search.value !== '')
+    {
+        if(dropDown.value === "Beer Name")
+        {
+            param = `beers?${search.value}`
+            fetchBeers(renderCards,param);
+        }
+        if(dropDown.value === "Yeast Name")
+        {
+            param = "yeast"
+        }
+        if(dropDown.value === "Hops Variety")
+        {
+            param = "hops"
+        }
+        if(dropDown.value === "Malt Name")
+        {
+            param = "malt"
+        }
+        if(dropDown.value === "Food Pairing")
+        {
+            param = "food"
+        }
+    }
   });
 };
 
