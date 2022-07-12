@@ -155,9 +155,9 @@ const createObjectOfBeerAttributeValues = (beers) =>
 
     populateDropdown(beerAttributes);
 }
-const filterBeersFromDropdownByAttribute = (attribute) => 
+const filterBeersFromDropdownByAttribute = (attribute,value = 5) => 
 {
-    
+    console.log(fetchBeers(renderCards,`?abv_gt=${value}`))
 }
 const populateDropdown = (obj) =>
 {
@@ -178,7 +178,6 @@ const populateDropdown = (obj) =>
     let keys = Object.keys(obj);
     keys.forEach(key => filterDropdown(key));
 }
-
 
 //On page load
 window.onload = () => 
