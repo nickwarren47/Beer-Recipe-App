@@ -96,6 +96,8 @@ const initListeners = () => {
         fetchBeers(renderCards, param);
       }
     }
+    search.value = "";
+    dropDown.value = "Beer Name";
   });
 };
 
@@ -183,8 +185,6 @@ const renderCards = (beers) => {
     const btn = document.createElement("button");
 
     div.style.display = "inline-grid";
-    div.style.width = "250px";
-    div.style.height = "550px";
     div.id = "card";
 
     btn.classname = "like-btn";
