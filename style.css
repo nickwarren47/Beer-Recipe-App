@@ -1,3 +1,4 @@
+
 body {
     margin: 0;
     font-family: monospace;
@@ -7,7 +8,16 @@ body {
     width: 100%;
     margin: 0;
   }
-
+  #beer-story
+  {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+    border-radius:25px;
+    width: 90%;
+    margin-left:auto;
+    margin-right: auto;
+  }
 
   #beer-header {
     /* display: flex; */
@@ -80,7 +90,7 @@ body {
 
   .bigButton {
     position: relative;
-    background-color:#4d4d4d ;
+    background-color:#663333 ;
     border: none;
     border-radius: 5px;
     height: 3rem;
@@ -91,16 +101,12 @@ body {
   }
   .upvote
   {
- 
-    
-    /* CSS */
-     
       font-family: "Open Sans", sans-serif;
       font-size: 16px;
       letter-spacing: 2px;
       text-decoration: none;
       text-transform: uppercase;
-      color: #000;
+      color: #CC3300;
       cursor: pointer;
       border: 3px solid;
       padding: 0.25em 0.5em;
@@ -109,6 +115,7 @@ body {
       user-select: none;
       -webkit-user-select: none;
       touch-action: manipulation;
+      border-color: black; 
     }
 
   @media (min-width: 768px) {
@@ -134,8 +141,9 @@ body {
     width: 50rem;
     height: auto;
     display: none;
-    background-color: rgba(130, 181, 186, 0.73);
+    background-color: #FFCC99;
     border-radius: 50px;
+    
   }
 
 
