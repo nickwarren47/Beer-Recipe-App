@@ -10,9 +10,8 @@ const initListeners = () =>
     const formContainer = document.querySelector(".add-beer-form");
     const inputDiv = document.querySelector(".container");
     const forwardButton = document.getElementById('page-forward');
-    const backButton = document.getElementById('page-back');
     const filterForm = document.getElementById('beer-filter');
-
+    const mainDiv = document.getElementById('beer-collection');
     let isForm = false;
 
     addBeerButton.addEventListener("click", () => {
@@ -40,18 +39,10 @@ const initListeners = () =>
 
     forwardButton.addEventListener('click', () =>
     {
+        mainDiv.innerHTML = '';
         pageNumber++;
         fetchBeers(renderCards,`beers?page=${pageNumber}`)
         window.scrollTo(0,0)
-    })
-    backButton.addEventListener('click',() =>
-    {
-        if(pageNumber >= 0)
-        {
-        pageNumber--;
-        fetchBeers(renderCards,`beers?page=${pageNumber}`)
-        window.scrollTo(0,0)
-        }
     })
     filterForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -119,7 +110,7 @@ const renderCards = (beers) =>
     div.style.display = "inline-grid"
     div.style.width = '250px'
     div.style.height = '550px'
-    div.classname = 'card'
+    div.id = 'card'
 
     btn.classname = 'like-btn'
     btn.textContent = '↑upvote↑';

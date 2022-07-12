@@ -14,10 +14,14 @@ body {
     text-align: center;
     justify-content: center;
     background: #f1d3b7;
-    opacity: .8;
     height: 7rem;
+    width: 50rem;
     padding: 1rem;
-
+    border-radius:25px;
+    margin-left:auto;
+    background-color: GREY;
+    background-image: url("https://www.transparenttextures.com/patterns/beige-paper.png");
+    margin-right: auto;
   }
 
   #beer-header img {
@@ -35,15 +39,18 @@ body {
     text-align: center;
   }
 
-  .card {
+  #card {
     text-align: center;
     border: grey solid 1px;
+    background-color: white;
     padding: 1rem;
     display: inline-block;
     margin: 1rem 2rem;
-    box-shadow: 3px 4px #e04b52;
+    box-shadow: 3px 4px #ccc;
     display: inline-grid;
     width: 250px;
+    border-radius: 2px; 
+    border-color:black
   }
 
   .beer-avatar {
@@ -73,7 +80,7 @@ body {
 
   .bigButton {
     position: relative;
-    background-color: #7e5a00;
+    background-color:#4d4d4d ;
     border: none;
     border-radius: 5px;
     height: 3rem;
@@ -82,20 +89,39 @@ body {
     font-size: 18px;
     justify-self: center;
   }
-  .upvoteButton
+  .upvote
   {
-    position: relative;
-    background-color: #7e5a00;
-    border: none;
-    border-radius: 5px;
-    height: 3rem;
-    width: max-content;
-    color: whitesmoke;
-    font-size: 18px;
-    justify-self: center;
+ 
+    
+    /* CSS */
+     
+      font-family: "Open Sans", sans-serif;
+      font-size: 16px;
+      letter-spacing: 2px;
+      text-decoration: none;
+      text-transform: uppercase;
+      color: #000;
+      cursor: pointer;
+      border: 3px solid;
+      padding: 0.25em 0.5em;
+      box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+      position: relative;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+
+  @media (min-width: 768px) {
+    .button-54 {
+    padding: 0.25em 0.75em;
+      }
+    }
+  .upvote:active {
+    box-shadow: 0px 0px 0px 0px;
+    top: 5px;
+    left: 5px;
   }
-  
-  button:hover {
+  .bigButton:hover {
     background-color: whitesmoke;
     border: black solid 1px;
     color: black;
@@ -103,12 +129,15 @@ body {
 
   .container {
     padding: 1rem;
-    width: stretch;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50rem;
     height: auto;
     display: none;
-    background: #b49e88;
-    opacity: .8;
+    background-color: rgba(130, 181, 186, 0.73);
+    border-radius: 50px;
   }
+
 
   .add-beer-form {
     width: 80%
@@ -116,7 +145,7 @@ body {
 
   .submit {
     position: relative;
-    background-color: #e6ae17;
+    background-color: #2c2207;
     border: none;
     border-radius: 5px;
     height: 3rem;
@@ -148,8 +177,6 @@ body {
     height: 1rem;
     width: 4rem;
   }
-
-
 
 /* pop up box */
   .hover_bkgr_fricc{
@@ -217,3 +244,10 @@ body {
     display: block;
   }
 
+  html { 
+    background-image: linear-gradient(45deg, transparent 20%, black 25%, transparent 25%),
+                      linear-gradient(-45deg, transparent 20%, black 25%, transparent 25%),
+                      linear-gradient(-45deg, transparent 75%, black 80%, transparent 0),
+                      radial-gradient(gray 2px, transparent 0);
+    background-size: 30px 30px, 30px 30px;
+  }
