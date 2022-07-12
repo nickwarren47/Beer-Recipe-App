@@ -161,82 +161,13 @@ const renderCards = (beers) => {
     div.append(h4, img, p, btn);
     mainDiv.append(div);
   });
-  createObjectOfBeerAttributeValues(beers);
-};
 
-const createObjectOfBeerAttributeValues = (beers) => {
-  let beerAttributes = {
-    abv: [],
-    ibu: [],
-    name: [],
-    hop: [],
-    ph: [],
-    yeast: [],
-  };
-
-  beers.forEach((beer) => {
-    beerAttributes.abv.push(beer.abv);
-    beerAttributes.ibu.push(beer.ibu);
-    beerAttributes.name.push(beer.name);
-
-    beer.ingredients.hops.forEach((id) => {
-      beerAttributes.hop.push(id.name);
-    });
-
-    beerAttributes.ph.push(beer.ph);
-    beerAttributes.yeast.push(beer.ingredients.yeast);
-  });
-
-  beerAttributes.abv.sort((a, b) => a - b);
-  beerAttributes.ibu.sort((a, b) => a - b);
-  beerAttributes.name.sort();
-  beerAttributes.hop.sort();
-  beerAttributes.ph.sort((a, b) => a - b);
-  beerAttributes.yeast.sort();
-
-  populateDropdown(beerAttributes);
-};
-const filterBeersFromDropdownByAttribute = (attribute, value = 5) =>
-  console.log(fetchBeers(renderCards, `?abv_gt=${value}`));
-{
-}
-const populateDropdown = (obj) => {
-  let memory;
-  const filterDropdown = (key) => {
-    obj[key].forEach((value) => {
-      if (memory !== value) {
-        let option = document.createElement("option");
-        option.innerHTML = value;
-        document.getElementById(`${key}`).append(option);
-      }
-      memory = value;
-    });
-    memory = undefined;
-  };
-  let keys = Object.keys(obj);
-  keys.forEach((key) => filterDropdown(key));
 };
 
 //On page load
 window.onload = () => {
   initListeners();
   fetchBeers(renderCards);
-  // fetchBeers(postRecipesFromAPI);
 };
 
-// function postRecipesFromAPI(array){
-//     array.forEach((object) => {
-//         // let count = 1;
-//         fetch(`http://localhost:3000/beer-recipes`, {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type':'application/json'
-//             },
-//             body:
-//                 JSON.stringify(object),
-//         })
-//         .then(res => res.json())
-//         .then(data => console.log(data));
-//         // count++;
-//     })
-// }
+
