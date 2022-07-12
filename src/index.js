@@ -1,5 +1,5 @@
-const fetchBeers = (callback, param = "beers") => {
-  fetch(`https://api.punkapi.com/v2/${param}`)
+const fetchBeers = (callback, param = "beers", url ='https://api.punkapi.com/v2/') => {
+  fetch(`${url}${param}`)
     .then((data) => data.json())
     .then((beers) => callback(beers))
     .then(console.log("searching with param: ", param));

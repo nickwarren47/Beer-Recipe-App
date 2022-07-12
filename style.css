@@ -53,9 +53,7 @@ body {
   #beer-collection {
     margin: 2rem;
     text-align: center;
-    /* display: grid;   */
-    /* grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));  
-    grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));  */
+    position: relative;
   }
 
   #card {
@@ -73,6 +71,7 @@ body {
     border-color:black;
     max-width:250px;
     max-height:550px;
+    
   }
   #card h2
   {
@@ -91,13 +90,11 @@ body {
     max-height: 400px;
     max-width:50%;
     margin: auto;
-    display: block;
   }
   img:hover
   {
     cursor:pointer;
   }
-  
   .container {
     padding: 1rem;
     margin-left: auto;
