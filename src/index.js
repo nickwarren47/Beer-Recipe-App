@@ -12,8 +12,13 @@ const initListeners = () => {
   const forwardButton = document.getElementById("page-forward");
   const filterForm = document.getElementById("beer-filter");
   const mainDiv = document.getElementById("beer-collection");
+  const header = document.getElementById("beer-story");
   let isForm = false;
 
+  header.addEventListener("click", () => {
+    window.location.replace("http://127.0.0.1:5500/index.html");
+  })
+  
   addBeerButton.addEventListener("click", () => {
     isForm = !isForm;
 
