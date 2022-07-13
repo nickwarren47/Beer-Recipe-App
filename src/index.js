@@ -18,7 +18,6 @@ const postSavedBeers = (object) => {
 
 const initListeners = () => {
   const addBeerButton = document.getElementById("new-beer-btn");
-  const formContainer = document.querySelector(".add-beer-form");
   const inputDiv = document.querySelector(".container");
   const forwardButton = document.getElementById("page-forward");
   const filterForm = document.getElementById("beer-filter");
@@ -35,17 +34,6 @@ const initListeners = () => {
     if (!isForm) inputDiv.style.display = "none";
 
     if (isForm) inputDiv.style.display = "block";
-  });
-
-  formContainer.addEventListener("submit", (event) => {
-    event.preventDefault();
-    let newBeer = {};
-    newBeer.name = document.getElementById("1").value;
-    newBeer.image_url = document.getElementById("2").value;
-    newBeer.tagline = document.getElementById("3").value;
-    newBeer.ingredients = [];
-    newBeer.ingredients["hops"] = ["n/a"];
-    renderCards([newBeer]);
   });
 
   let pageNumber = 1;

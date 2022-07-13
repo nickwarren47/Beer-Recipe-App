@@ -225,12 +225,11 @@ body {
     padding: 1rem;
     margin-left: auto;
     margin-right: auto;
-    width: 50rem;
+    width: fit-content;
     height: auto;
     display: none;
-    background-color: #FFCC99;
-    border-radius: 50px;
-    
+    color: white;
+    background-color: black;
   }
 
   .beer-avatar {
