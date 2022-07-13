@@ -17,7 +17,9 @@
             <a href="#" class="nav-link">HOME</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">ABOUT APP</a>
+            <!-- <a href="#" class="nav-link">ABOUT APP</a> -->
+            <a href="#" class="nav-link" id="about-app" onclick="togglePopup()">ABOUT APP</a>
+
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link" id="new-beer-btn">ADD BEER</a>
@@ -30,6 +32,27 @@
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
+        </div>
+        <div class="hamburgerPopup" id="popup-1">
+          <div class="overlay"></div>
+          <div class="content">
+            <div class="close-btn"onclick="togglePopup()">&times;</div>
+            <h1>About The App</h1>
+            <p>Welcome to the Beast Brewer App! This app was built with the intention that 
+              any home brewer from a beginner to seasoned expert could find value in this 
+              app with their home brewing creations. In the app, you will be able to find 
+              various beer recipes that include the ABV value, IBU value, hops, malts, yeast,
+              and so much more. To save a beer, simply press the "Save Beer" button below the beer 
+              and you can access it in the "Saved Beers" menu above. 
+            </p>
+            <h1>Meet Our Developers</h1>
+            <h2>Jared Mumaw</h2>
+            <p>Insert info</p>
+            <h2>Kevin Gicheha</h2>
+            <p>Insert info</p>
+            <h2>Nick Warren</h2>
+            <p>Insert info</p>
+          </div>
         </div>
       </nav>
     </header>
