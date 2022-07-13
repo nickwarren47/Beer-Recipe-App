@@ -38,6 +38,9 @@ const initListeners = () => {
   document.getElementById('home').addEventListener("click", () => {
     document.location.reload();
   });
+  document.getElementById('title').addEventListener("click", () => {
+    document.location.reload();
+  });
 
   addBeerButton.addEventListener("click", () => {
     isForm = !isForm;
