@@ -55,33 +55,34 @@ const initListeners = () => {
 
   filterForm.addEventListener("submit", (e) => {
     e.preventDefault();
+    pageNumber = 1;
     const dropDown = document.getElementById("param");
     const search = document.getElementById("search");
     if (search.value !== "") {
       if (dropDown.value === "Beer Name") {
         mainDiv.innerHTML = "";
-        param = `beers?beer_name=${search.value}`;
-        fetchBeers(renderCards, param);
+        param = `beer_name=${search.value}`;
+        fetchBeers(renderCards, 'beers?' + param);
       }
       if (dropDown.value === "Yeast Name") {
         mainDiv.innerHTML = "";
-        param = `beers?yeast=${search.value}`;
-        fetchBeers(renderCards, param);
+        param = `yeast=${search.value}`;
+        fetchBeers(renderCards,'beers?' + param);
       }
       if (dropDown.value === "Hops Variety") {
         mainDiv.innerHTML = "";
-        param = `beers?hops=${search.value}`;
-        fetchBeers(renderCards, param);
+        param = `hops=${search.value}`;
+        fetchBeers(renderCards,'beers?' + param);
       }
       if (dropDown.value === "Malt Name") {
         mainDiv.innerHTML = "";
-        param = `beers?malt=${search.value}`;
-        fetchBeers(renderCards, param);
+        param = `malt=${search.value}`;
+        fetchBeers(renderCards,'beers?' + param);
       }
       if (dropDown.value === "Food Pairing") {
         mainDiv.innerHTML = "";
-        param = `beers?food=${search.value}`;
-        fetchBeers(renderCards, param);
+        param = `food=${search.value}`;
+        fetchBeers(renderCards,'beers?' + param);
       }
     }
     search.value = "";
