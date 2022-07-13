@@ -16,6 +16,15 @@ const postSavedBeers = (object) => {
     });
   };
 
+const deleteSavedBeer = (id) => {
+    fetch(`http://localhost:3000/savedBeer/${id}`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': "application/json"
+      }
+    })
+  }
+
 const initListeners = () => {
   const addBeerButton = document.getElementById("new-beer-btn");
   const inputDiv = document.querySelector(".container");
@@ -193,6 +202,7 @@ const renderCards = async (beers) => {
     const img = document.createElement("img");
     const p = document.createElement("p");
     const btn = document.createElement("button");
+    const savedNotification = document.createElement("span")
     div.style.display = "inline-grid";
     div.id = "card";
 
@@ -205,15 +215,18 @@ const renderCards = async (beers) => {
     img.id = "productImage";
     p.innerHTML = beer.tagline;
 
+    savedNotification.textContent = "Product Saved"
+
     img.addEventListener("click", (event) => {
       if (event) detailCards(beer);
     });
 
     btn.addEventListener("click", () => {
         postSavedBeers(beer)
-        console.log(beer)
+        // div.append(savedNotification)
+
     })
-    
+
     div.append(h4, img, p, btn);
     mainDiv.append(div);
     if(doDelete)
@@ -221,10 +234,13 @@ const renderCards = async (beers) => {
         const deleteButton = document.createElement('button');
         deleteButton.textContent = "X";
         deleteButton.className = 'delete-btn';
+        // deleteButton.style.color = "red"
+        deleteButton.style["font-weight"] ="bold"
         deleteButton.addEventListener('click', () =>{
             div.remove();
+            deleteSavedBeer(beer.id)
         })
-        div.append(deleteButton);
+        div.prepend(deleteButton);
     }
   });
 
@@ -234,6 +250,7 @@ const renderCards = async (beers) => {
     fetchBeers(renderCards, "", savedBeersURL);
   })
 };
+
 
 //On page load
 window.onload = () => {
