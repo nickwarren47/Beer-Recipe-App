@@ -194,7 +194,9 @@ document.querySelectorAll(".nav-link").forEach(n => n.addEventListener('click', 
     hamburger.classList.remove("active");
     navMenu.classList.remove("active");
 }))
-
+function togglePopup(){
+  document.getElementById("popup-1").classList.toggle("active");
+}
 const renderCards = (beers) => {
   const mainDiv = document.getElementById("beer-collection");
   beers.forEach((beer) => {
