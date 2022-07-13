@@ -31,10 +31,12 @@ const initListeners = () => {
   const forwardButton = document.getElementById("page-forward");
   const filterForm = document.getElementById("beer-filter");
   const mainDiv = document.getElementById("beer-collection");
+  const savedBeersURL = "http://localhost:3000/savedBeer";
+  const savedBeerButton = document.querySelector("#saved-beer-btn");
   let isForm = false;
 
   document.getElementById('home').addEventListener("click", () => {
-    window.location.replace("http://127.0.0.1:5500/index.html");
+    document.location.reload();
   });
 
   addBeerButton.addEventListener("click", () => {
@@ -97,7 +99,12 @@ const initListeners = () => {
     search.value = "";
     dropDown.value = "Beer Name";
   });
-
+  savedBeerButton.addEventListener('click', ()=> {
+    mainDiv.innerHTML = ""
+    fetchBeers(renderCards, "", savedBeersURL);
+    doDelete = !doDelete;
+    console.log(doDelete);
+  })
 
 };
 
@@ -189,12 +196,12 @@ document.querySelectorAll(".nav-link").forEach(n => n.addEventListener('click', 
 function togglePopup(){
   document.getElementById('popup-1').classList.toggle("active");
 }
+
 let doDelete = false;
 
-const renderCards = async (beers) => {
+const renderCards = (beers) => {
   const mainDiv = document.getElementById("beer-collection");
-  const savedBeersURL = "http://localhost:3000/savedBeer";
-  const savedBeerButton = document.querySelector("#saved-beer-btn");
+
 
   beers.forEach((beer) => {
     const div = document.createElement("div");
@@ -232,23 +239,16 @@ const renderCards = async (beers) => {
     if(doDelete)
     {
         const deleteButton = document.createElement('button');
-        deleteButton.textContent = "X";
-        deleteButton.className = 'delete-btn';
-        // deleteButton.style.color = "red"
-        deleteButton.style["font-weight"] ="bold"
+        deleteButton.className = "close-btn"
+        deleteButton.innerHTML = "×"
         deleteButton.addEventListener('click', () =>{
             div.remove();
             deleteSavedBeer(beer.id)
         })
-        div.prepend(deleteButton);
+        div.append(deleteButton);
     }
   });
-
-  savedBeerButton.addEventListener('click', ()=> {
-    mainDiv.innerHTML = ""
-    doDelete = !doDelete;
-    fetchBeers(renderCards, "", savedBeersURL);
-  })
+  doDelete = false;
 };
 
 

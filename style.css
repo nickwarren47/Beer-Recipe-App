@@ -123,20 +123,26 @@ body {
   .hamburgerPopup .content h1 {
     text-decoration: underline;
   }
-  .hamburgerPopup .close-btn{
-    position:absolute;
-    right:-20px;
-    top:-20px;
-    width:30px;
-    height:30px;
-    background-color: black;
-    color:#fff;
-    font-size:25px;
-    font-weight:600;
-    line-height:30px;
-    text-align:center;
-    border-radius:50%;
+  
+  .close-btn{
+    background-color: #fff;
+    border: 3px solid #999;
+    border-radius: 50px;
     cursor: pointer;
+    display: inline-block;
+    font-family: arial;
+    font-weight: bold;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 25px;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+  }
+  .close-btn:hover {
+    background-color: #ccc;
   }
   .hamburgerPopup.active .overlay{
     display:block;
@@ -197,7 +203,7 @@ body {
     border-color:black;
     max-width:250px;
     max-height:550px;
-
+    position:relative;
   }
   #card h2
   {
@@ -399,9 +405,7 @@ body {
   height: 30px;
   text-align: center;
 }
-.popupCloseButton:hover {
-  background-color: #ccc;
-}
+
 .trigger_popup_fricc {
   cursor: pointer;
   font-size: 20px;
