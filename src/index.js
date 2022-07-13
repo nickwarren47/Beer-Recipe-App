@@ -188,9 +188,6 @@ document.querySelectorAll(".nav-link").forEach(n => n.addEventListener('click', 
     hamburger.classList.remove("active");
     navMenu.classList.remove("active");
 }))
-function togglePopup(){
-  document.getElementById("popup-1").classList.toggle("active");
-}
 
 let doDelete = false;
 
