@@ -25,10 +25,6 @@ const initListeners = () => {
   const mainDiv = document.getElementById("beer-collection");
   let isForm = false;
 
-  document.getElementById('home').addEventListener("click", () => {
-    window.location.replace("http://127.0.0.1:5500/index.html");
-  });
-
   addBeerButton.addEventListener("click", () => {
     isForm = !isForm;
 
@@ -191,7 +187,6 @@ document.querySelectorAll(".nav-link").forEach(n => n.addEventListener('click', 
 function togglePopup(){
   document.getElementById("popup-1").classList.toggle("active");
 }
-
 let doDelete = false;
 
 const renderCards = async (beers) => {
