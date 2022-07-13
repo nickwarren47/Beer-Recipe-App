@@ -21,10 +21,10 @@
             <a href="#" id= "nav2" class="nav-link">ABOUT APP</a>
           </li>
           <li class="nav-item">
-            <a href="#" id= "nav3" class="nav-link">DEVELOPERS</a>
+            <a href="#" class="nav-link" id="new-beer-btn">ADD BEER</a>
           </li>
           <li class="nav-item">
-            <a href="#" id= "nav4" class="nav-link">SAVED BEERS</a>
+            <a href="#" class="nav-link" id="saved-beer-btn">SAVED BEERS</a>
           </li>
         </ul>
         <div class="hamburger">
@@ -52,14 +52,12 @@
     </header>
       <!-- Display beer -->
     <div id="beer-detail">
-      <img
+      <!-- <img
       src="https://user-images.githubusercontent.com/106715328/178347920-30b34660-82ff-4328-aafb-3635376f7b40.jpg"
       alt="coverPhoto"
-      />
+      /> -->
     </div>
-      <div id="beer-story">
-        <h1>Welcome to Beast Brewer, the Best Online Brewer's Cookbook</h1>
-      </div>
+      
     </div>
     <div position="fixed"><background id="background" ></background></div>
     <div class="container">
@@ -108,11 +106,8 @@
         />
       </form>
     </div>
-    <p style="text-align:center">
-      <button id="new-beer-btn" class="bigButton">Add a new beer!</button>
-    </p>
-
-    <div id="beer-collection"></div>
+    <div id="beer-collection">
+    </div>
     <div class="hover_bkgr_fricc">
       <span class="myPopup"></span>
       <div id="keyData">
@@ -122,9 +117,6 @@
   <div id="page-buttons">
     <button id="page-forward"class="pageButton">more recipes</button>
   </div>
-  <p style="text-align:center">
-    <button id="saved-beer-btn" class="bigButton">Saved Beer</button>
-  </p>
     <script defer type="text/javascript" src="src/index.js"></script>
   </body>
 </html>

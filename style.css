@@ -88,6 +88,7 @@ body {
       width: 100%;
       text-align: center;
       transition: 0.3s;
+      z-index:9;
     }
     .nav-item{
       margin: 19px 0;
@@ -142,17 +143,6 @@ body {
       transform:translate(-50%,-50%) scale(1);
     }
 
-  #beer-story
-  {
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    background-color: white;
-    border-radius:25px;
-    width: 90%;
-    margin-left:auto;
-    margin-right: auto;
-    cursor: pointer;
-  }
   #beer-detail img{
     max-height: 400px;
     max-width:50%;
@@ -267,7 +257,7 @@ body {
   }
 
   .bigButton {
-    position: relative;
+    position: flex;
     background-color:#663333 ;
     border: none;
     border-radius: 5px;

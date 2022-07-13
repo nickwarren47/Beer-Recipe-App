@@ -113,6 +113,258 @@
       ],
       "brewers_tips": "Be careful not to collect too much wort from the mash. Once the sugars are all washed out there are some very unpleasant grainy tasting compounds that can be extracted into the wort.",
       "contributed_by": "Sam Mason <samjbmason>"
+    },
+    {
+      "id": 8,
+      "name": "Fake Lager",
+      "tagline": "Bohemian Pilsner.",
+      "first_brewed": "03/2013",
+      "description": "Fake is the new black. Fake is where it is at. Fake Art, fake brands, fake breasts, and fake lager. We want to play our part in the ugly fallout from the Lager Dream. Say hello to Fake Lager – a zesty, floral 21st century faux masterpiece with added BrewDog bitterness.",
+      "image_url": "https://images.punkapi.com/v2/8.png",
+      "abv": 4.7,
+      "ibu": 40,
+      "target_fg": 1010,
+      "target_og": 1046,
+      "ebc": 12,
+      "srm": 6,
+      "ph": 4.4,
+      "attenuation_level": 78,
+      "volume": {
+        "value": 20,
+        "unit": "litres"
+      },
+      "boil_volume": {
+        "value": 25,
+        "unit": "litres"
+      },
+      "method": {
+        "mash_temp": [
+          {
+            "temp": {
+              "value": 65,
+              "unit": "celsius"
+            },
+            "duration": 75
+          }
+        ],
+        "fermentation": {
+          "temp": {
+            "value": 10,
+            "unit": "celsius"
+          }
+        },
+        "twist": null
+      },
+      "ingredients": {
+        "malt": [
+          {
+            "name": "Extra Pale",
+            "amount": {
+              "value": 3.33,
+              "unit": "kilograms"
+            }
+          },
+          {
+            "name": "Munich",
+            "amount": {
+              "value": 0.42,
+              "unit": "kilograms"
+            }
+          },
+          {
+            "name": "Caramalt",
+            "amount": {
+              "value": 0.28,
+              "unit": "kilograms"
+            }
+          },
+          {
+            "name": "Acidulated Malt",
+            "amount": {
+              "value": 0.07,
+              "unit": "kilograms"
+            }
+          }
+        ],
+        "hops": [
+          {
+            "name": "Magnum",
+            "amount": {
+              "value": 7.5,
+              "unit": "grams"
+            },
+            "add": "start",
+            "attribute": "bitter"
+          },
+          {
+            "name": "Magnum",
+            "amount": {
+              "value": 5,
+              "unit": "grams"
+            },
+            "add": "middle",
+            "attribute": "flavour"
+          },
+          {
+            "name": "Hersbrucker",
+            "amount": {
+              "value": 6.25,
+              "unit": "grams"
+            },
+            "add": "middle",
+            "attribute": "flavour"
+          },
+          {
+            "name": "Saaz",
+            "amount": {
+              "value": 6.25,
+              "unit": "grams"
+            },
+            "add": "middle",
+            "attribute": "flavour"
+          },
+          {
+            "name": "Hersbrucker",
+            "amount": {
+              "value": 18.75,
+              "unit": "grams"
+            },
+            "add": "end",
+            "attribute": "flavour"
+          },
+          {
+            "name": "Saaz",
+            "amount": {
+              "value": 18.75,
+              "unit": "grams"
+            },
+            "add": "end",
+            "attribute": "flavour"
+          }
+        ],
+        "yeast": "Wyeast 2007 - Pilsen Lager™"
+      },
+      "food_pairing": [
+        "Fried crab cakes with avocado salsa",
+        "Spicy shredded pork roll with hot dipping sauce",
+        "Key lime pie"
+      ],
+      "brewers_tips": "Once the primary fermentation is complete get this beer as cold as you can and let it mature for as long as you've got.",
+      "contributed_by": "Sam Mason <samjbmason>"
+    },
+    {
+      "id": 3,
+      "name": "Berliner Weisse With Yuzu - B-Sides",
+      "tagline": "Japanese Citrus Berliner Weisse.",
+      "first_brewed": "11/2015",
+      "description": "Japanese citrus fruit intensifies the sour nature of this German classic.",
+      "image_url": "https://images.punkapi.com/v2/keg.png",
+      "abv": 4.2,
+      "ibu": 8,
+      "target_fg": 1007,
+      "target_og": 1040,
+      "ebc": 8,
+      "srm": 4,
+      "ph": 3.2,
+      "attenuation_level": 83,
+      "volume": {
+        "value": 20,
+        "unit": "litres"
+      },
+      "boil_volume": {
+        "value": 25,
+        "unit": "litres"
+      },
+      "method": {
+        "mash_temp": [
+          {
+            "temp": {
+              "value": 60,
+              "unit": "celsius"
+            },
+            "duration": 10
+          },
+          {
+            "temp": {
+              "value": 65,
+              "unit": "celsius"
+            },
+            "duration": 30
+          },
+          {
+            "temp": {
+              "value": 72,
+              "unit": "celsius"
+            },
+            "duration": 10
+          },
+          {
+            "temp": {
+              "value": 78,
+              "unit": "celsius"
+            },
+            "duration": 5
+          }
+        ],
+        "fermentation": {
+          "temp": {
+            "value": 21,
+            "unit": "celsius"
+          }
+        },
+        "twist": "Soured naturally using the kettle souring technique, Yuzu fruit: 50g at middle, Yuzu juice: 200ml at FV"
+      },
+      "ingredients": {
+        "malt": [
+          {
+            "name": "Propino Pale Malt",
+            "amount": {
+              "value": 1.63,
+              "unit": "kilograms"
+            }
+          },
+          {
+            "name": "Wheat Malt",
+            "amount": {
+              "value": 1.63,
+              "unit": "kilograms"
+            }
+          },
+          {
+            "name": "Propino Pale Malt for kettle souring",
+            "amount": {
+              "value": 0.03,
+              "unit": "kilograms"
+            }
+          },
+          {
+            "name": "Acidulated Malt for kettle souring",
+            "amount": {
+              "value": 0.03,
+              "unit": "kilograms"
+            }
+          }
+        ],
+        "hops": [
+          {
+            "name": "Bramling Cross",
+            "amount": {
+              "value": 10,
+              "unit": "grams"
+            },
+            "add": "middle",
+            "attribute": "bitter"
+          }
+        ],
+        "yeast": "Wyeast 1056 - American Ale™"
+      },
+      "food_pairing": [
+        "Smoked chicken wings",
+        "Miso ramen",
+        "Yuzu cheesecake"
+      ],
+      "brewers_tips": "Clean everything twice. All you want is the clean sourness of lactobacillus.",
+      "contributed_by": "Sam Mason <samjbmason>"
     }
   ]
 }
