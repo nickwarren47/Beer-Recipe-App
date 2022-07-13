@@ -34,7 +34,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 60px;
+    gap: 60px; 
   }
 
   .nav-branding{
@@ -236,9 +236,8 @@ body {
     display: none;
     color: white;
     background-color: black;
-    background-color: #FFCC99;
-    border-radius: 50px;
-
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px; 
   }
 
   .beer-avatar {

@@ -98,6 +98,7 @@ const initListeners = () => {
         param = `food=${search.value}`;
         fetchBeers(renderCards,'beers?' + param);
       }
+      forwardButton.style.display = "flex";
     }
     search.value = "";
     dropDown.value = "Beer Name";
@@ -106,7 +107,7 @@ const initListeners = () => {
     mainDiv.innerHTML = ""
     fetchBeers(renderCards, "", savedBeersURL);
     doDelete = !doDelete;
-    console.log(doDelete);
+    forwardButton.style.display = "none";
   })
 
 };
