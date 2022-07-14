@@ -39,8 +39,11 @@ body {
 
   .nav-branding{
     font-size: 2rem;
+    transition: all .2s ease-in-out;
   }
-
+  .nav-branding:hover{
+    transform: scale(1.1);
+  }
   .nav-link{
     transition: 0.7s ease;
   }
@@ -113,7 +116,8 @@ body {
     left:50%;
     transform:translate(-50%,-50%) scale(0);
     background:#fff;
-    width:450px;
+    max-width:450px;
+    min-width: 50%;
     z-index:2;
     text-align:center;
     padding:20px;
@@ -237,7 +241,7 @@ body {
     color: white;
     background-color: black;
     border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px; 
+    border-bottom-right-radius: 8px;
   }
 
   .beer-avatar {
