@@ -1,10 +1,8 @@
 const fetchBeers = (callback, param = "beers", url = 'https://api.punkapi.com/v2/') => {
     fetch(`${url}${param}`)
         .then((data) => data.json())
-        .then((beers) => callback(beers))
-        .then(console.log("searching with param: ", param));
+        .then((beers) => callback(beers))    
 };
-
 
 const postSavedBeers = (object) => {
     fetch('http://localhost:3000/savedBeer', {
@@ -33,7 +31,13 @@ const initListeners = () => {
     const mainDiv = document.getElementById("beer-collection");
     const savedBeersURL = "http://localhost:3000/savedBeer";
     const savedBeerButton = document.querySelector("#saved-beer-btn");
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    const search = document.getElementById("search");
+    const dropDown = document.getElementById('param');
     let isForm = false;
+    let pageNumber = 1;
+    let param = "";
 
     document.getElementById('home').addEventListener("click", () => {
         document.location.reload();
@@ -42,6 +46,16 @@ const initListeners = () => {
         document.location.reload();
     });
 
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+    });
+
+    document.querySelectorAll(".nav-link").forEach(link => link.addEventListener('click', () => {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }));
+    
     addBeerButton.addEventListener("click", () => {
         isForm = !isForm;
 
@@ -50,16 +64,14 @@ const initListeners = () => {
         if(isForm) inputDiv.style.display = "block";
     });
 
-    let pageNumber = 1;
-    let param = "";
-
     forwardButton.addEventListener("click", () => {
         if(param) {
             pageNumber++;
             param = "&" + param;
             mainDiv.innerHTML = "";
             fetchBeers(renderCards, `beers?page=${pageNumber}${param}`);
-        } else {
+        } 
+        if(!param){
             pageNumber++;
             mainDiv.innerHTML = "";
             fetchBeers(renderCards, `beers?page=${pageNumber}`);
@@ -70,8 +82,7 @@ const initListeners = () => {
     filterForm.addEventListener("submit", (e) => {
         e.preventDefault();
         pageNumber = 1;
-        const dropDown = document.getElementById("param");
-        const search = document.getElementById("search");
+        console.log(e.target[0]);
         if(search.value !== "") {
             if(dropDown.value === "Beer Name") {
                 mainDiv.innerHTML = "";
@@ -99,6 +110,7 @@ const initListeners = () => {
                 fetchBeers(renderCards, 'beers?' + param);
             }
             forwardButton.style.display = "flex";
+
         }
         search.value = "";
         dropDown.value = "Beer Name";
@@ -109,9 +121,13 @@ const initListeners = () => {
         fetchBeers(renderCards, "", savedBeersURL);
         doDelete = !doDelete;
         forwardButton.style.display = "none";
-    })
+    });
 
-};
+}
+
+function togglePopup() {
+  document.getElementById('popup-1').classList.toggle("active");
+}
 
 const detailCards = (beer) => {
     const popUpBox = document.querySelector(".hover_bkgr_fricc");
@@ -187,29 +203,16 @@ const detailCards = (beer) => {
     });
 };
 
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
-
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle("active");
-    navMenu.classList.toggle("active");
-})
-document.querySelectorAll(".nav-link").forEach(n => n.addEventListener('click', () => {
-    hamburger.classList.remove("active");
-    navMenu.classList.remove("active");
-}))
-
-function togglePopup() {
-    document.getElementById('popup-1').classList.toggle("active");
-}
 
 let doDelete = false;
 
 const renderCards = (beers) => {
     const mainDiv = document.getElementById("beer-collection");
-
-
-    beers.forEach((beer) => {
+    const h2 = document.createElement('h2')
+    h2.textContent = "End of results.";
+    h2.id = "end";
+    
+    beers.forEach((beer,i) => {
         const div = document.createElement("div");
         const h4 = document.createElement("h2");
         const img = document.createElement("img");
@@ -227,12 +230,9 @@ const renderCards = (beers) => {
         img.src = beer.image_url;
         img.id = "productImage";
         p.innerHTML = beer.tagline;
+        btn.style.display = 'none';
 
-
-
-        img.addEventListener("click", (event) => {
-            if(event) detailCards(beer);
-        });
+ 
 
         btn.addEventListener("click", () => {
             postSavedBeers(beer)
@@ -240,10 +240,16 @@ const renderCards = (beers) => {
             savedNote.className = "popup"
             div.prepend(savedNote)
         })
+        
+        if(beer.error !== true)
+        {
+          img.addEventListener("click", (event) => {
+            if(event) detailCards(beer);
+          });
+          btn.style.display = 'block';
+        }
 
         savedNote.remove();
-
-
         div.append(h4, img, p, btn);
         mainDiv.append(div);
 
@@ -257,7 +263,16 @@ const renderCards = (beers) => {
             })
             div.append(deleteButton);
         }
+        console.log(i);
+        if(i === beers.length-1)
+        {
+          mainDiv.append(h2)
+        }
     });
+    if(beers.length === 0)
+    {
+      mainDiv.append(h2);
+    }
     doDelete = false;
 };
 
