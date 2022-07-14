@@ -82,7 +82,6 @@ const initListeners = () => {
     filterForm.addEventListener("submit", (e) => {
         e.preventDefault();
         pageNumber = 1;
-        console.log(e.target[0]);
         if(search.value !== "") {
             if(dropDown.value === "Beer Name") {
                 mainDiv.innerHTML = "";
@@ -109,40 +108,39 @@ const initListeners = () => {
                 param = `food=${search.value}`;
                 fetchBeers(renderCards, 'beers?' + param);
             }
-            if(typeof(parseInt(search.value)) == 'number'){
+            if(!isNaN(parseInt(search.value))){
               if(dropDown.value === "ABV >") {
                 mainDiv.innerHTML = "";
-                param = `abv_gt=${search.value}`;
+                param = `abv_gt=${parseInt(search.value)}`;
                 fetchBeers(renderCards, 'beers?' + param);
               }
               if(dropDown.value === "ABV <") {
                 mainDiv.innerHTML = "";
-                param = `abv_lt=${search.value}`;
+                param = `abv_lt=${parseInt(search.value)}`;
                 fetchBeers(renderCards, 'beers?' + param);
               }
               if(dropDown.value === "IBU >") {
                 mainDiv.innerHTML = "";
-                param = `ibu_gt=${search.value}`;
+                param = `ibu_gt=${parseInt(search.value)}`;
                 fetchBeers(renderCards, 'beers?' + param);
               }
               if(dropDown.value === "IBU <") {
                 mainDiv.innerHTML = "";
-                param = `ibu_lt=${search.value}`;
+                param = `ibu_lt=${parseInt(search.value)}`;
                 fetchBeers(renderCards, 'beers?' + param);
               }
               if(dropDown.value === "EBC >") {
                 mainDiv.innerHTML = "";
-                param = `ebc_gt=${search.value}`;
+                param = `ebc_gt=${parseInt(search.value)}`;
                 fetchBeers(renderCards, 'beers?' + param);
               }
               if(dropDown.value === "EBC <") {
                 mainDiv.innerHTML = "";
-                param = `ebc_lt=${search.value}`;
+                param = `ebc_lt=${parseInt(search.value)}`;
                 fetchBeers(renderCards, 'beers?' + param);
               }
           }
             forwardButton.style.display = "flex";
-
         }
         search.value = "";
         dropDown.value = "Beer Name";
@@ -299,7 +297,6 @@ const renderCards = (beers) => {
             })
             div.append(deleteButton);
         }
-        console.log(i);
         if(i === beers.length-1)
         {
           mainDiv.append(h2)
