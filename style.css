@@ -14,6 +14,9 @@ body {
   }
   header{
     background-color: black;
+    position: sticky;
+    top: 0;
+    width: 100%;
   }
   .nav-item{
     list-style: none;
@@ -208,6 +211,7 @@ body {
     max-width:250px;
     max-height:550px;
     position:relative;
+    z-index: -1;
   }
   #card h2
   {
