@@ -109,6 +109,38 @@ const initListeners = () => {
                 param = `food=${search.value}`;
                 fetchBeers(renderCards, 'beers?' + param);
             }
+            if(typeof(parseInt(search.value)) == 'number'){
+              if(dropDown.value === "ABV >") {
+                mainDiv.innerHTML = "";
+                param = `abv_gt=${search.value}`;
+                fetchBeers(renderCards, 'beers?' + param);
+              }
+              if(dropDown.value === "ABV <") {
+                mainDiv.innerHTML = "";
+                param = `abv_lt=${search.value}`;
+                fetchBeers(renderCards, 'beers?' + param);
+              }
+              if(dropDown.value === "IBU >") {
+                mainDiv.innerHTML = "";
+                param = `ibu_gt=${search.value}`;
+                fetchBeers(renderCards, 'beers?' + param);
+              }
+              if(dropDown.value === "IBU <") {
+                mainDiv.innerHTML = "";
+                param = `ibu_lt=${search.value}`;
+                fetchBeers(renderCards, 'beers?' + param);
+              }
+              if(dropDown.value === "EBC >") {
+                mainDiv.innerHTML = "";
+                param = `ebc_gt=${search.value}`;
+                fetchBeers(renderCards, 'beers?' + param);
+              }
+              if(dropDown.value === "EBC <") {
+                mainDiv.innerHTML = "";
+                param = `ebc_lt=${search.value}`;
+                fetchBeers(renderCards, 'beers?' + param);
+              }
+          }
             forwardButton.style.display = "flex";
 
         }
