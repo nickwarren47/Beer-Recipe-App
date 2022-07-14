@@ -11,6 +11,7 @@
   </head>
   <body>
     <header>
+      <div id="header">
       <nav class="navbar">
         <a href="#" class="nav-branding" id="title">BEAST BREWER</a>
         <ul class="nav-menu">
@@ -35,43 +36,7 @@
           <span class="bar"></span>
         </div>
       </nav>
-      <div class="hamburgerPopup" id="popup-1">
-        <div class="overlay"></div>
-        <div class="content">
-          <div class="close-btn"onclick="togglePopup()">&times;</div>
-          <h1>About The App</h1>
-          <p>Welcome to the Beast Brewer App! This app was built with the intention that
-            any home brewer from a beginner to seasoned expert could find value in this
-            app with their home brewing creations. In the app, you will be able to find
-            various beer recipes that include the ABV value, IBU value, hops, malts, yeast,
-            and so much more. To save a beer, simply press the "Save Beer" button below the beer
-            and you can access it in the "Saved Beers" menu above.
-          </p>
-          <br>
-          <h1>Meet Our Developers</h1>
-          <h2>Jared Mumaw</h2>
-          <p>Jared is a full-stack developer from Portland, OR who enjoys drinking beer.</p>
-          <h2>Kevin Gicheha</h2>
-          <p>A Full Stack Engineer from Kenya, who is passionate about technology and enjoys
-            solving problems and fixing bugs</p>
-          <h2>Nick Warren</h2>
-          <p>A Software Engineer by day and Master Home Brewer by night. Nick enjoys combining
-            his two passions for programming and brewing into applications that can help
-            others. Nick is from Denver, CO.
-          </p>
-        </div>
-      </div>
-    </header>
-      <!-- Display beer -->
-    <div id="beer-detail">
-      <!-- <img
-      src="https://user-images.githubusercontent.com/106715328/178347920-30b34660-82ff-4328-aafb-3635376f7b40.jpg"
-      alt="coverPhoto"
-      /> -->
     </div>
-
-    </div>
-    <div position="fixed"><background id="background" ></background></div>
     <div class="container">
       <div id = "beer-filter">
       <form>
@@ -88,6 +53,43 @@
       </form>
     </div>
     </div>
+    </header>
+    <div class="hamburgerPopup" id="popup-1">
+      <div class="overlay"></div>
+      <div class="content">
+        <div class="close-btn"onclick="togglePopup()">&times;</div>
+        <h1>About The App</h1>
+        <p>Welcome to the Beast Brewer App! This app was built with the intention that
+          any home brewer from a beginner to seasoned expert could find value in this
+          app with their home brewing creations. In the app, you will be able to find
+          various beer recipes that include the ABV value, IBU value, hops, malts, yeast,
+          and so much more. To save a beer, simply press the "Save Beer" button below the beer
+          and you can access it in the "Saved Beers" menu above.
+        </p>
+        <br>
+        <h1>Meet Our Developers</h1>
+        <h2>Jared Mumaw</h2>
+        <p>Jared is a full-stack developer from Portland, OR who enjoys drinking beer.</p>
+        <h2>Kevin Gicheha</h2>
+        <p>A Full Stack Engineer from Kenya, who is passionate about technology and enjoys
+          solving problems and fixing bugs</p>
+        <h2>Nick Warren</h2>
+        <p>A Software Engineer by day and Master Home Brewer by night. Nick enjoys combining
+          his two passions for programming and brewing into applications that can help
+          others. Nick is from Denver, CO.
+        </p>
+      </div>
+    </div>
+      <!-- Display beer -->
+    <div id="beer-detail">
+      <!-- <img
+      src="https://user-images.githubusercontent.com/106715328/178347920-30b34660-82ff-4328-aafb-3635376f7b40.jpg"
+      alt="coverPhoto"
+      /> -->
+    </div>
+
+    </div>
+    <div position="fixed"><background id="background" ></background></div>
     <div id="beer-collection">
     </div>
     <div class="hover_bkgr_fricc">
