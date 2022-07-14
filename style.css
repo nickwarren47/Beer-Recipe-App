@@ -131,7 +131,7 @@ body {
     transform:translate(-50%,-50%) scale(0);
     background:#fff;
     max-width:450px;
-    min-width: 50%;
+    min-width: 75%;
     z-index:2;
     text-align:center;
     padding:20px;
