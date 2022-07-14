@@ -13,7 +13,7 @@ const postSavedBeers = (object) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(object),
-    });
+    })
   };
 
 const deleteSavedBeer = (id) => {
@@ -213,7 +213,6 @@ const renderCards = (beers) => {
     const img = document.createElement("img");
     const p = document.createElement("p");
     const btn = document.createElement("button");
-    const savedNotification = document.createElement("span")
     div.style.display = "inline-grid";
     div.id = "card";
 
@@ -226,17 +225,20 @@ const renderCards = (beers) => {
     img.id = "productImage";
     p.innerHTML = beer.tagline;
 
-    savedNotification.textContent = "Product Saved"
+
 
     img.addEventListener("click", (event) => {
       if (event) detailCards(beer);
     });
-
+    const savedNote = document.createElement("h3")
     btn.addEventListener("click", () => {
         postSavedBeers(beer)
-        // div.append(savedNotification)
-
+        savedNote.textContent = "Product Saved"
+        savedNote.className = "popup"
+        div.prepend(savedNote)
     })
+    savedNote.remove();
+
 
     div.append(h4, img, p, btn);
     mainDiv.append(div);
@@ -254,7 +256,6 @@ const renderCards = (beers) => {
   });
   doDelete = false;
 };
-
 
 //On page load
 window.onload = () => {
