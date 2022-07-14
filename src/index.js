@@ -146,6 +146,7 @@ const detailCards = (beer) => {
     const malts = document.createElement("h3");
     const hops = document.createElement("h3");
     const yeast = document.createElement("h3");
+    const foodPairing = document.createElement("h4");
 
     data.textContent = `KEY DATA`;
     beerName.textContent = beer.name;
@@ -153,6 +154,8 @@ const detailCards = (beer) => {
     ibu.textContent = `IBU: ` + beer.ibu;
     volume.textContent = `Volume: ` + beer.volume.value + " " + beer.volume.unit;
     ph.textContent = `ph: ` + beer.ph;
+    foodPairing.textContent = `Food Pairing: ` + beer["food_pairing"]
+
 
     mashTemp.textContent =
         "Mash Temp: " +
@@ -192,6 +195,7 @@ const detailCards = (beer) => {
         malts,
         hops,
         yeast,
+        foodPairing,
         description
     );
     keyData.append(newdiv);
