@@ -4,98 +4,91 @@
   box-sizing: border-box;
 }
 body {
-    margin: 0;
-    font-family: monospace;
-  }
-  #coverPhoto{
-    height: 15%;
-    width: 100%;
-    margin: 0;
-  }
-  header{
-    position: sticky;
-    top:0;
-    z-index:10;
-  }
-  .container {
-    padding: 1rem;
-    margin-left: auto;
-    width: fit-content;
-    display: none;
-    color: white;
-    background-color: black;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    position: sticky;
-  }
-  .nav-item{
-    list-style: none;
-  }
-  a{
-    color: white;
-    text-decoration: none;
-  }
-  .navbar{
-    background-color: black;
-    min-height: 70px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 24px;
-  }
-
-  .nav-menu{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 60px; 
-  }
-
-  .nav-branding{
-    font-size: 2rem;
-    transition: all .2s ease-in-out;
-  }
-  .nav-branding:hover{
-    transform: scale(1.1);
-  }
-  .nav-link{
-    transition: 0.7s ease;
-  }
-
-  .nav-link:hover{
-    color: dodgerblue
-  }
-
+  margin: 0;
+  font-family: monospace;
+}
+#coverPhoto{
+  height: 15%;
+  width: 100%;
+  margin: 0;
+}
+header{
+  position: sticky;
+  top:0;
+  z-index:10;
+}
+.container {
+  padding: 1rem;
+  margin-left: auto;
+  width: fit-content;
+  display: none;
+  color: white;
+  background-color: black;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  position: sticky;
+}
+.nav-item{
+  list-style: none;
+}
+a{
+  color: white;
+  text-decoration: none;
+}
+.navbar{
+  background-color: black;
+  min-height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+}
+.nav-menu{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+}
+.nav-branding{
+  font-size: 2rem;
+  transition: all .2s ease-in-out;
+}
+.nav-branding:hover{
+  transform: scale(1.1);
+}
+.nav-link{
+  transition: 0.7s ease;
+}
+.nav-link:hover{
+  color: dodgerblue 
+}
+.hamburger{
+  display: none;
+  cursor: pointer;
+}
+.bar{
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: white;
+}
+@media(max-width:768px){
   .hamburger{
-    display: none;
-    cursor: pointer;
-  }
-
-  .bar{
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    background-color: white;
-  }
-
-  @media(max-width:768px){
-    .hamburger{
       display: block;
-    }
-
-    .hamburger.active .bar:nth-child(2){
+ }
+  .hamburger.active .bar:nth-child(2){
       opacity: 0;
-    }
-    .hamburger.active .bar:nth-child(1){
+ }
+  .hamburger.active .bar:nth-child(1){
       transform: translateY(8px) rotate(45deg);
-    }
-    .hamburger.active .bar:nth-child(3){
+ }
+  .hamburger.active .bar:nth-child(3){
       transform: translateY(-8px) rotate(-45deg);
-    }
-    .nav-menu{
+ }
+  .nav-menu{
       position:absolute;
       left: -100%;
       top: 70px;
@@ -106,281 +99,259 @@ body {
       text-align: center;
       transition: 0.3s;
       z-index:9;
-    }
-    .nav-item{
+ }
+  .nav-item{
       margin: 19px 0;
-    }
-    .nav-menu.active{
+ }
+  .nav-menu.active{
       left: 0;
-    }
-  }
-  .hamburgerPopup .overlay {
-    position:fixed;
-    top:0px;
-    left:0px;
-    width:100vw;
-    height:100vh;
-    background:rgba(0,0,0,0.7);
-    z-index:1;
-    display:none;
-  }
-  .hamburgerPopup .content{
-    position:fixed;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%) scale(0);
-    background:#fff;
-    max-width:450px;
-    min-width: 75%;
-    z-index:2;
-    text-align:center;
-    padding:20px;
-    box-sizing:border-box;
-    border-radius:8px;
-  }
-  .hamburgerPopup .content h1 {
-    text-decoration: underline;
-  }
-
-  .close-btn{
-    background-color: #fff;
-    border: 3px solid #999;
-    border-radius: 50px;
-    cursor: pointer;
-    display: inline-block;
-    font-family: arial;
-    font-weight: bold;
-    position: absolute;
-    top: -20px;
-    right: -20px;
-    font-size: 25px;
-    line-height: 30px;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-  }
-  .close-btn:hover {
-    background-color: #ccc;
-  }
-  .hamburgerPopup.active .overlay{
-    display:block;
-  }
-  .hamburgerPopup.active .content{
-    transition:all 300ms ease-in-out;
-    transform:translate(-50%,-50%) scale(1);
-  }
-  #beer-detail img{
-    max-height: 400px;
-    max-width:50%;
-    margin: auto;
-    display: block;
-  }
-  #beer-header {
-    /* display: flex; */
-    text-align: center;
-    justify-content: center;
-    background: #f1d3b7;
-    height: 7rem;
-    width: 50rem;
-    padding: 1rem;
-    border-radius:25px;
-    margin-left:auto;
-    background-color: GREY;
-    background-image: url("https://www.transparenttextures.com/patterns/beige-paper.png");
-    margin-right: auto;
-  }
-
-  #beer-header img {
-    height: 6rem;
-    width: auto;
-  }
-  #beer-header p {
-    position:relative;
-    bottom:10px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-  #beer-collection {
-    margin: 2rem;
-    text-align: center;
-    position: relative;
-  }
-
-  #card {
-    text-align: center;
-    border: grey solid 1px;
-    background-color: white;
-    padding: 1rem;
-    display: inline-block;
-    width: 75%;
-    height: 75%;
-    margin: 1rem 2rem;
-    box-shadow: 3px 4px #ccc;
-    display: inline-grid;
-    border-radius: 2px;
-    border-color:black;
-    max-width:250px;
-    max-height:550px;
-    position:relative;
-  }
-  #card h2
-  {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-  #card p{
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-  #card img {
-    height: 24rem;
-    width: 6rem;
-    max-height: 400px;
-    max-width:50%;
-    margin: auto;
-  }
-  img:hover
-  {
-    cursor:pointer;
-  }
- 
-
-  .beer-avatar {
-    justify-self: center;
-    height: 12rem;
-    width: auto;
-  }
-  #page-buttons
-  {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
-  }
-  .pagebutton
-  {
-    position: relative;
-    background-color: #7e5a00;
-    border: none;
-    border-radius: 5px;
-    height: 3rem;
-    width: max-content;
-    color: whitesmoke;
-    font-size: 18px;
-    justify-self: center;
-  }
-
-  .bigButton {
-    position: flex;
-    background-color:#663333 ;
-    border: none;
-    border-radius: 5px;
-    height: 3rem;
-    width: max-content;
-    color: whitesmoke;
-    font-size: 18px;
-    justify-self: center;
-  }
-  .upvote
-  {
-      font-family: "Open Sans", sans-serif;
-      font-size: 16px;
-      letter-spacing: 2px;
-      text-decoration: none;
-      text-transform: uppercase;
-      color: #CC3300;
-      cursor: pointer;
-      border: 3px solid;
-      padding: 0.25em 0.5em;
-      box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
-      position: relative;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation;
-      border-color: black;
-      max-height: 37.4px;
-
-    }
-
-  @media (min-width: 768px) {
-    .button-54 {
-    padding: 0.25em 0.75em;
-      }
-    }
-  .upvote:active {
-    box-shadow: 0px 0px 0px 0px;
-    top: 5px;
-    left: 5px;
-  }
-  .bigButton:hover {
-    background-color: whitesmoke;
-    border: black solid 1px;
-    color: black;
-  }
-
-
-
-  .add-beer-form {
-    width: 80%
-  }
-
-  .submit {
-    position: relative;
-    background-color: #2c2207;
-    border: none;
-    border-radius: 5px;
-    height: 3rem;
-    width: max-content;
-    color: whitesmoke;
-    font-size: 18px;
-    justify-self: center;
-    font-family: monospace;
-    margin: 3px;
-  }
-
-  .submit:hover {
-    background-color: whitesmoke;
-    border: black solid 1px;
-    color: black;
-  }
-
-
-  .input-text {
-    border-radius: 5px;
-    height: 2rem;
-    width: 60%;
-    font-size: 18px;
-    font-family: monospace;
-    margin: 3px;
-  }
-
-  #upvote {
-    height: 1rem;
-    width: 4rem;
-  }
-  #beer-filter select:hover {
-    cursor: pointer;
-  }
+ }
+}
+.hamburgerPopup .overlay {
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:100vw;
+  height:100vh;
+  background:rgba(0,0,0,0.7);
+  z-index:1;
+  display:none;
+}
+.hamburgerPopup .content{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) scale(0);
+  background:#fff;
+  max-width:450px;
+  min-width: 75%;
+  z-index:2;
+  text-align:center;
+  padding:20px;
+  box-sizing:border-box;
+  border-radius:8px;
+}
+.hamburgerPopup .content h1 {
+  text-decoration: underline;
+}
+.close-btn{
+  background-color: #fff;
+  border: 3px solid #999;
+  border-radius: 50px;
+  cursor: pointer;
+  display: inline-block;
+  font-family: arial;
+  font-weight: bold;
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 25px;
+  line-height: 30px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+}
+.close-btn:hover {
+  background-color: #ccc;
+}
+.hamburgerPopup.active .overlay{
+  display:block;
+}
+.hamburgerPopup.active .content{
+  transition:all 300ms ease-in-out;
+  transform:translate(-50%,-50%) scale(1);
+}
+#beer-detail img{
+  max-height: 400px;
+  max-width:50%;
+  margin: auto;
+  display: block;
+}
+#beer-header {
+ /* display: flex;
+  */
+  text-align: center;
+  justify-content: center;
+  background: #f1d3b7;
+  height: 7rem;
+  width: 50rem;
+  padding: 1rem;
+  border-radius:25px;
+  margin-left:auto;
+  background-color: GREY;
+  background-image: url("https://www.transparenttextures.com/patterns/beige-paper.png");
+  margin-right: auto;
+}
+#beer-header img {
+  height: 6rem;
+  width: auto;
+}
+#beer-header p {
+  position:relative;
+  bottom:10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#beer-collection {
+  margin: 2rem;
+  text-align: center;
+  position: relative;
+}
+#card {
+  text-align: center;
+  border: grey solid 1px;
+  background-color: white;
+  padding: 1rem;
+  display: inline-block;
+  width: 75%;
+  height: 75%;
+  margin: 1rem 2rem;
+  box-shadow: 3px 4px #ccc;
+  display: inline-grid;
+  border-radius: 2px;
+  border-color:black;
+  max-width:250px;
+  max-height:550px;
+  position:relative;
+}
+#card h2 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#card p{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#card img {
+  height: 24rem;
+  width: 6rem;
+  max-height: 400px;
+  max-width:50%;
+  margin: auto;
+}
+img:hover {
+  cursor:pointer;
+}
+.beer-avatar {
+  justify-self: center;
+  height: 12rem;
+  width: auto;
+}
+#page-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+.pagebutton {
+  position: relative;
+  background-color: #7e5a00;
+  border: none;
+  border-radius: 5px;
+  height: 3rem;
+  width: max-content;
+  color: whitesmoke;
+  font-size: 18px;
+  justify-self: center;
+}
+.bigButton {
+  position: flex;
+  background-color:#663333 ;
+  border: none;
+  border-radius: 5px;
+  height: 3rem;
+  width: max-content;
+  color: whitesmoke;
+  font-size: 18px;
+  justify-self: center;
+}
+.upvote {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #CC3300;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  border-color: black;
+  max-height: 37.4px;
+}
+@media (min-width: 768px) {
+  .button-54 {
+      padding: 0.25em 0.75em;
+ }
+}
+.upvote:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+.bigButton:hover {
+  background-color: whitesmoke;
+  border: black solid 1px;
+  color: black;
+}
+.add-beer-form {
+  width: 80% 
+}
+.submit {
+  position: relative;
+  background-color: #2c2207;
+  border: none;
+  border-radius: 5px;
+  height: 3rem;
+  width: max-content;
+  color: whitesmoke;
+  font-size: 18px;
+  justify-self: center;
+  font-family: monospace;
+  margin: 3px;
+}
+.submit:hover {
+  background-color: whitesmoke;
+  border: black solid 1px;
+  color: black;
+}
+.input-text {
+  border-radius: 5px;
+  height: 2rem;
+  width: 60%;
+  font-size: 18px;
+  font-family: monospace;
+  margin: 3px;
+}
+#upvote {
+  height: 1rem;
+  width: 4rem;
+}
+#beer-filter select:hover {
+  cursor: pointer;
+}
 /* pop up box */
-  .hover_bkgr_fricc{
-    background:rgba(0,0,0,.4);
-    cursor:pointer;
-    display:none;
-    height:100%;
-    position:fixed;
-    text-align:center;
-    top:0;
-    width:100%;
-    z-index:10000;
+.hover_bkgr_fricc{
+  background:rgba(0,0,0,.4);
+  cursor:pointer;
+  display:none;
+  height:100%;
+  position:fixed;
+  text-align:center;
+  top:0;
+  width:100%;
+  z-index:10000;
 }
 .hover_bkgr_fricc .myPopup{
-    display:inline-block;
-    height:100%;
-    vertical-align:middle;
+  display:inline-block;
+  height:100%;
+  vertical-align:middle;
 }
-
 .hover_bkgr_fricc > div {
   background-color: #fff;
   box-shadow: 10px 10px 60px #555;
@@ -411,7 +382,6 @@ body {
   height: 30px;
   text-align: center;
 }
-
 .trigger_popup_fricc {
   cursor: pointer;
   font-size: 20px;
@@ -421,8 +391,12 @@ body {
 }
 /* product Saved Sign */
 @keyframes fade-in-out {
-  0%{ opacity: 1}
-  100% { opacity: 0}
+  0%{
+      opacity: 1
+ }
+  100% {
+      opacity: 0
+ }
 }
 .popup{
   position: absolute;
@@ -434,11 +408,7 @@ body {
   animation-duration: 3s;
   animation-fill-mode: forwards;
 }
-
-  html  {
-    background-image: linear-gradient(45deg, transparent 20%, black 25%, transparent 25%),
-                      linear-gradient(-45deg, transparent 20%, black 25%, transparent 25%),
-                      linear-gradient(-45deg, transparent 75%, black 80%, transparent 0),
-                      radial-gradient(gray 2px, transparent 0);
-    background-size: 30px 30px, 30px 30px;
-  }
+html {
+  background-image: linear-gradient(45deg, transparent 20%, black 25%, transparent 25%), linear-gradient(-45deg, transparent 20%, black 25%, transparent 25%), linear-gradient(-45deg, transparent 75%, black 80%, transparent 0), radial-gradient(gray 2px, transparent 0);
+  background-size: 30px 30px, 30px 30px;
+}
