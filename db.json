@@ -1,20 +1,20 @@
 {
   "savedBeer": [
     {
-      "id": 2,
-      "name": "Trashy Blonde",
-      "tagline": "You Know You Shouldn't",
-      "first_brewed": "04/2008",
-      "description": "A titillating, neurotic, peroxide punk of a Pale Ale. Combining attitude, style, substance, and a little bit of low self esteem for good measure; what would your mother say? The seductive lure of the sassy passion fruit hop proves too much to resist. All that is even before we get onto the fact that there are no additives, preservatives, pasteurization or strings attached. All wrapped up with the customary BrewDog bite and imaginative twist.",
-      "image_url": "https://images.punkapi.com/v2/2.png",
-      "abv": 4.1,
-      "ibu": 41.5,
-      "target_fg": 1010,
-      "target_og": 1041.7,
-      "ebc": 15,
-      "srm": 15,
+      "id": 15,
+      "name": "Mixtape 8",
+      "tagline": "An Epic Fusion Of Old Belgian, American New Wave, And Scotch Whisky.",
+      "first_brewed": "01/2012",
+      "description": "This recipe is for the Belgian Tripel base. A blend of two huge oak aged beers – half a hopped up Belgian Tripel, and half a Triple India Pale Ale. Both aged in single grain whisky barrels for two years and blended, each beer brings its own character to the mix. The Belgian Tripel comes loaded with complex spicy, fruity esters, and punchy citrus hop character.",
+      "image_url": "https://images.punkapi.com/v2/15.png",
+      "abv": 14.5,
+      "ibu": 50,
+      "target_fg": 1014,
+      "target_og": 1093,
+      "ebc": 40,
+      "srm": 20,
       "ph": 4.4,
-      "attenuation_level": 76,
+      "attenuation_level": 85,
       "volume": {
         "value": 20,
         "unit": "litres"
@@ -27,15 +27,128 @@
         "mash_temp": [
           {
             "temp": {
-              "value": 69,
+              "value": 65,
               "unit": "celsius"
             },
-            "duration": null
+            "duration": 40
           }
         ],
         "fermentation": {
           "temp": {
-            "value": 18,
+            "value": 21,
+            "unit": "celsius"
+          }
+        },
+        "twist": "Barrel aged and blended with Anarchist Alchemist"
+      },
+      "ingredients": {
+        "malt": [
+          {
+            "name": "Pale Ale - Tipple",
+            "amount": {
+              "value": 11.1,
+              "unit": "kilograms"
+            }
+          },
+          {
+            "name": "Caramalt",
+            "amount": {
+              "value": 0.94,
+              "unit": "kilograms"
+            }
+          },
+          {
+            "name": "Crystal",
+            "amount": {
+              "value": 0.44,
+              "unit": "kilograms"
+            }
+          }
+        ],
+        "hops": [
+          {
+            "name": "Columbus Extract",
+            "amount": {
+              "value": 12.5,
+              "unit": "grams"
+            },
+            "add": "start",
+            "attribute": "bitter"
+          },
+          {
+            "name": "Centennial",
+            "amount": {
+              "value": 37.5,
+              "unit": "grams"
+            },
+            "add": "end",
+            "attribute": "flavour"
+          },
+          {
+            "name": "Cascade",
+            "amount": {
+              "value": 37.5,
+              "unit": "grams"
+            },
+            "add": "end",
+            "attribute": "flavour"
+          },
+          {
+            "name": "Simcoe",
+            "amount": {
+              "value": 37.5,
+              "unit": "grams"
+            },
+            "add": "end",
+            "attribute": "flavour"
+          }
+        ],
+        "yeast": "Wyeast 3522 - Belgian Ardennes™"
+      },
+      "food_pairing": [
+        "Coriander & chilli crab cakes",
+        "Goats cheese salad with walnuts, radish and blood orange",
+        "Pistachio cake"
+      ],
+      "brewers_tips": "Brew twice as much Belgian Tripel as you were planning on ageing - it's awesome on its own too!",
+      "contributed_by": "Sam Mason <samjbmason>"
+    },
+    {
+      "id": 14,
+      "name": "Alpha Dog",
+      "tagline": "Existential Red Ale.",
+      "first_brewed": "02/2010",
+      "description": "A fusion of caramel malt flavours and punchy New Zealand hops. A session beer you can get your teeth into.",
+      "image_url": "https://images.punkapi.com/v2/14.png",
+      "abv": 4.5,
+      "ibu": 42,
+      "target_fg": 1025,
+      "target_og": 1046,
+      "ebc": 62,
+      "srm": 31,
+      "ph": 4.4,
+      "attenuation_level": 72.8,
+      "volume": {
+        "value": 20,
+        "unit": "litres"
+      },
+      "boil_volume": {
+        "value": 25,
+        "unit": "litres"
+      },
+      "method": {
+        "mash_temp": [
+          {
+            "temp": {
+              "value": 65,
+              "unit": "celsius"
+            },
+            "duration": 25
+          }
+        ],
+        "fermentation": {
+          "temp": {
+            "value": 22,
             "unit": "celsius"
           }
         },
@@ -46,39 +159,44 @@
           {
             "name": "Maris Otter Extra Pale",
             "amount": {
-              "value": 3.25,
+              "value": 2.5,
               "unit": "kilograms"
             }
           },
           {
             "name": "Caramalt",
             "amount": {
-              "value": 0.2,
+              "value": 1.25,
               "unit": "kilograms"
             }
           },
           {
             "name": "Munich",
             "amount": {
-              "value": 0.4,
+              "value": 0.61,
+              "unit": "kilograms"
+            }
+          },
+          {
+            "name": "Crystal 150",
+            "amount": {
+              "value": 0.28,
+              "unit": "kilograms"
+            }
+          },
+          {
+            "name": "Dark Crystal 350-400",
+            "amount": {
+              "value": 0.2,
               "unit": "kilograms"
             }
           }
         ],
         "hops": [
           {
-            "name": "Amarillo",
+            "name": "Nelson Sauvin",
             "amount": {
-              "value": 13.8,
-              "unit": "grams"
-            },
-            "add": "start",
-            "attribute": "bitter"
-          },
-          {
-            "name": "Simcoe",
-            "amount": {
-              "value": 13.8,
+              "value": 15,
               "unit": "grams"
             },
             "add": "start",
@@ -87,16 +205,16 @@
           {
             "name": "Amarillo",
             "amount": {
-              "value": 26.3,
+              "value": 10,
               "unit": "grams"
             },
             "add": "end",
             "attribute": "flavour"
           },
           {
-            "name": "Motueka",
+            "name": "Nelson Sauvin",
             "amount": {
-              "value": 18.8,
+              "value": 30,
               "unit": "grams"
             },
             "add": "end",
@@ -106,29 +224,29 @@
         "yeast": "Wyeast 1056 - American Ale™"
       },
       "food_pairing": [
-        "Fresh crab with lemon",
-        "Garlic butter dipping sauce",
-        "Goats cheese salad",
-        "Creamy lemon bar doused in powdered sugar"
+        "Pastrami",
+        "Swiss and horseradish sandwich",
+        "Sharp cheddar cheese and onion/ raisin chutney",
+        "Peanut brittle"
       ],
-      "brewers_tips": "Be careful not to collect too much wort from the mash. Once the sugars are all washed out there are some very unpleasant grainy tasting compounds that can be extracted into the wort.",
+      "brewers_tips": "Crush the malt as close to brewing time as possible. The fresher the malt, the more intense caramel flavours will be released in the wort.",
       "contributed_by": "Sam Mason <samjbmason>"
     },
     {
-      "id": 3,
-      "name": "Berliner Weisse With Yuzu - B-Sides",
-      "tagline": "Japanese Citrus Berliner Weisse.",
-      "first_brewed": "11/2015",
-      "description": "Japanese citrus fruit intensifies the sour nature of this German classic.",
-      "image_url": "https://images.punkapi.com/v2/keg.png",
-      "abv": 4.2,
-      "ibu": 8,
-      "target_fg": 1007,
-      "target_og": 1040,
-      "ebc": 8,
-      "srm": 4,
-      "ph": 3.2,
-      "attenuation_level": 83,
+      "id": 13,
+      "name": "Movember",
+      "tagline": "Moustache-Worthy Beer.",
+      "first_brewed": "11/2009",
+      "description": "A deliciously robust, black malted beer with a decadent dark, dry cocoa flavour that provides an enticing backdrop to the Cascade hops.",
+      "image_url": "https://images.punkapi.com/v2/13.png",
+      "abv": 4.5,
+      "ibu": 50,
+      "target_fg": 1012,
+      "target_og": 1047,
+      "ebc": 140,
+      "srm": 70,
+      "ph": 5.2,
+      "attenuation_level": 74.5,
       "volume": {
         "value": 20,
         "unit": "litres"
@@ -141,91 +259,95 @@
         "mash_temp": [
           {
             "temp": {
-              "value": 60,
+              "value": 68,
               "unit": "celsius"
             },
-            "duration": 10
-          },
-          {
-            "temp": {
-              "value": 65,
-              "unit": "celsius"
-            },
-            "duration": 30
-          },
-          {
-            "temp": {
-              "value": 72,
-              "unit": "celsius"
-            },
-            "duration": 10
-          },
-          {
-            "temp": {
-              "value": 78,
-              "unit": "celsius"
-            },
-            "duration": 5
+            "duration": 50
           }
         ],
         "fermentation": {
           "temp": {
-            "value": 21,
+            "value": 19,
             "unit": "celsius"
           }
         },
-        "twist": "Soured naturally using the kettle souring technique, Yuzu fruit: 50g at middle, Yuzu juice: 200ml at FV"
+        "twist": null
       },
       "ingredients": {
         "malt": [
           {
-            "name": "Propino Pale Malt",
+            "name": "Maris Otter Extra Pale",
             "amount": {
-              "value": 1.63,
+              "value": 3.44,
               "unit": "kilograms"
             }
           },
           {
-            "name": "Wheat Malt",
+            "name": "Caramalt",
             "amount": {
-              "value": 1.63,
+              "value": 0.63,
               "unit": "kilograms"
             }
           },
           {
-            "name": "Propino Pale Malt for kettle souring",
+            "name": "Crystal 150",
             "amount": {
-              "value": 0.03,
+              "value": 0.31,
               "unit": "kilograms"
             }
           },
           {
-            "name": "Acidulated Malt for kettle souring",
+            "name": "Carafa Special Malt Type 1",
             "amount": {
-              "value": 0.03,
+              "value": 0.31,
+              "unit": "kilograms"
+            }
+          },
+          {
+            "name": "Carafa Special Malt Type 3",
+            "amount": {
+              "value": 0.31,
               "unit": "kilograms"
             }
           }
         ],
         "hops": [
           {
-            "name": "Bramling Cross",
+            "name": "Cascade",
             "amount": {
-              "value": 10,
+              "value": 43.8,
               "unit": "grams"
             },
-            "add": "middle",
+            "add": "start",
             "attribute": "bitter"
+          },
+          {
+            "name": "Cascade",
+            "amount": {
+              "value": 81.3,
+              "unit": "grams"
+            },
+            "add": "end",
+            "attribute": "flavour"
+          },
+          {
+            "name": "Cascade",
+            "amount": {
+              "value": 250,
+              "unit": "grams"
+            },
+            "add": "dry hop",
+            "attribute": "aroma"
           }
         ],
         "yeast": "Wyeast 1056 - American Ale™"
       },
       "food_pairing": [
-        "Smoked chicken wings",
-        "Miso ramen",
-        "Yuzu cheesecake"
+        "Vegetable egg scramble",
+        "Margherita pizza",
+        "Fresh berry crisp tart"
       ],
-      "brewers_tips": "Clean everything twice. All you want is the clean sourness of lactobacillus.",
+      "brewers_tips": "If you can’t find really fresh cascade, substitute it for Amarillo or Ahtanum.",
       "contributed_by": "Sam Mason <samjbmason>"
     }
   ]
