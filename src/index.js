@@ -12,6 +12,14 @@ const postSavedBeers = (object) => {
         },
         body: JSON.stringify(object),
     })
+    .then(res => res.json())
+    .catch(error => {
+        const errorBox = document.createElement('h1');
+        errorBox.textContent = error;
+        document.getElementById('beer-collection').prepend(errorBox);
+        setTimeout(() => {
+            errorBox.remove()}, 1000)
+        })
 };
 
 const deleteSavedBeer = (id) => {
@@ -297,7 +305,7 @@ const renderCards = (beers) => {
             })
             div.append(deleteButton);
         }
-        if(i === beers.length-1)
+        if(i === beers.length-1 && (mainDiv === ''))
         {
           mainDiv.append(h2)
         }
